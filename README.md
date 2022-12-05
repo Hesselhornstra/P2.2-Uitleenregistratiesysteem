@@ -7,8 +7,8 @@ Dit project is het maken van een Uitleenregistratiesysteem. We maken het in HTML
 - Hessel
 
 ## Links
-[Trello](https://trello.com/b/Qo0igv6y/project-4)
-[Trello invite](https://trello.com/invite/b/Qo0igv6y/ATTI18ebf0ef81b9ffe7f1552ce37ea468204D900565/project-4)
+- [Trello](https://trello.com/b/Qo0igv6y/project-4)
+- [Trello invite](https://trello.com/invite/b/Qo0igv6y/ATTI18ebf0ef81b9ffe7f1552ce37ea468204D900565/project-4)
 
 ## Regels
 - Slaan mag.
