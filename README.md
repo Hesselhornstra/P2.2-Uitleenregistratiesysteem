@@ -1,7 +1,5 @@
 # P2.2-Uitleenregistratiesysteem
-```
 Dit project is het maken van een Uitleenregistratiesysteem. We maken het in HTML, CSS en PHP. We gebruiken MySQL als database.
-```
 
 ## Leden
 - Dimitri
@@ -23,9 +21,9 @@ Dit project is het maken van een Uitleenregistratiesysteem. We maken het in HTML
 - 3x te laat = op rotten.
 
 ## Straffen
-- Hessel  | - [], - [], - []
-- Dimitri | - [], - [], - []
-- Thomas  | - [], - [], - []
+- Hessel  | [], [], []
+- Dimitri | [], [], []
+- Thomas  | [], [], []
 
 ## Benodigde gegevens
 - Domein
