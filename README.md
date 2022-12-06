@@ -1,4 +1,8 @@
 # P2.2-Uitleenregistratiesysteem
+[![GitHub stars](https://img.shields.io/github/stars/Hesselhornstra/P2.2-Uitleenregistratiesysteem.svg)](https://github.com/Hesselhornstra/P2.2-Uitleenregistratiesysteem/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Hesselhornstra/P2.2-Uitleenregistratiesysteem.svg?color=blue)](https://github.com/Hesselhornstra/P2.2-Uitleenregistratiesysteem/network)
+[![GitHub contributors](https://img.shields.io/github/contributors/Hesselhornstra/P2.2-Uitleenregistratiesysteem.svg?color=blue)](https://github.com/Hesselhornstra/P2.2-Uitleenregistratiesysteem/network)
+
 Dit project is het maken van een Uitleenregistratiesysteem. We maken het in HTML, CSS en PHP. We gebruiken MySQL als database.
 
 ## Leden
@@ -21,9 +25,9 @@ Dit project is het maken van een Uitleenregistratiesysteem. We maken het in HTML
 - 3x te laat = op rotten.
 
 ## Straffen
-- Hessel  | [], [], []
-- Dimitri | [], [], []
-- Thomas  | [x], [], []
+- Hessel  | [ ], [ ], [ ]
+- Dimitri | [ ], [ ], [ ]
+- Thomas  | [ x ], [ ], [ ]
 
 ## Benodigde gegevens
 - Domein
