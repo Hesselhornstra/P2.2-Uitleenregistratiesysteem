@@ -7,5 +7,3 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 #ErrorDocument 404 /404.php #bestaat nog niet
 #ErrorDocument 403 /404.php #bestaat nog niet
 #ErrorDocument 500 /500.php #bestaat nog niet
-
-#RewriteRule ^home$ index.php #Eerste wat je boven in wilt hebben staan, Tweede is locatie van bestand.
