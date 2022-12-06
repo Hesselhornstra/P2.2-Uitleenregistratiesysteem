@@ -23,7 +23,7 @@ Dit project is het maken van een Uitleenregistratiesysteem. We maken het in HTML
 ## Straffen
 - Hessel  | [], [], []
 - Dimitri | [], [], []
-- Thomas  | [], [], []
+- Thomas  | [x], [], []
 
 ## Benodigde gegevens
 - Domein
