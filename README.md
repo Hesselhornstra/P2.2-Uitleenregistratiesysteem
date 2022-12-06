@@ -1,8 +1,8 @@
 # P2.2-Uitleenregistratiesysteem
-[![GitHub stars](https://img.shields.io/github/stars/Hesselhornstra/P2.2-Uitleenregistratiesysteem.svg)](https://github.com/Hesselhornstra/P2.2-Uitleenregistratiesysteem/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/Hesselhornstra/P2.2-Uitleenregistratiesysteem.svg?color=yellow)](https://github.com/Hesselhornstra/P2.2-Uitleenregistratiesysteem/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Hesselhornstra/P2.2-Uitleenregistratiesysteem.svg?color=blue)](https://github.com/Hesselhornstra/P2.2-Uitleenregistratiesysteem/network)
-[![GitHub contributors](https://img.shields.io/github/contributors/Hesselhornstra/P2.2-Uitleenregistratiesysteem.svg?color=blue)](https://github.com/Hesselhornstra/P2.2-Uitleenregistratiesysteem/network)
-[![GitHub Issues](https://img.shields.io/github/issues/Hesselhornstra/P2.2-Uitleenregistratiesysteem.svg?color=blue)](https://github.com/Hesselhornstra/P2.2-Uitleenregistratiesysteem/issues)
+[![GitHub contributors](https://img.shields.io/github/contributors/Hesselhornstra/P2.2-Uitleenregistratiesysteem.svg?color=green)](https://github.com/Hesselhornstra/P2.2-Uitleenregistratiesysteem/network)
+[![GitHub Issues](https://img.shields.io/github/issues/Hesselhornstra/P2.2-Uitleenregistratiesysteem.svg?color=orange)](https://github.com/Hesselhornstra/P2.2-Uitleenregistratiesysteem/issues)
 
 Dit project is het maken van een Uitleenregistratiesysteem. We maken het in HTML, CSS en PHP. We gebruiken MySQL als database.
 
