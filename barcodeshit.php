@@ -2,22 +2,21 @@
     <title>hello there</title>
     <h1>tester</h1>
 </html>
-
-                    <input type="text" name="naam" placeholder="Woonplaats" required><br><br>
+<form method="POST">
+                    <input type="text" name="naam" placeholder="naam" required><br><br>
                     
                     <button type="submit">Bestel</button>
-                    
+</form>
                     <?php
 require $_SERVER['DOCUMENT_ROOT'].'/config.php';
-
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 $con->query("
     INSERT INTO
-    barcode
+    bacode
     (
-    naam,
-   barcode
-    '".$con->real_escape_string($_POST['naam'])."',
-    '".$con->real_escape_string($_POST['barcode'])."'
+    naam
+    '".$con->real_escape_string($_POST['naam'])."'
     )
 ");
+    }
 ?>
