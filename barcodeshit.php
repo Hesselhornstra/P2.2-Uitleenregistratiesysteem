@@ -7,8 +7,8 @@
     <button type="submit">Bestel</button>
 </form>
                     <?php
-                    $con=query("SELECT * FROM bacode");
 require $_SERVER['DOCUMENT_ROOT'].'/config.php';
+$bacode = $con->query("SELECT * FROM bacode");
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 $con->query("
     INSERT INTO
@@ -26,14 +26,21 @@ $con->query("
                 
                 <thead>
                     <tr>
-                        <th class="groote">Aantal</th>
+                        <th class="groote">naam</th>
+                        <th class="groote">barcode</th>
 
                     </tr>
                 </thead>
                 <tbody>
+                <?php while ($row = $bacode->fetch_assoc()) {?>
+
                     <tr>
                         <td><?php echo $row['naam'] ?></td>
                         <td><?php echo $row['barcode'] ?></td>
                         
                     </tr>
+                    <?php } ?>
                     </tbody>
+                    <form action=“add-purchase.php" method="post">
+    <input name=“productId" onmouseover="this.focus();" type="text">
+</form>
