@@ -7,7 +7,7 @@
     <button type="submit">Bestel</button>
 </form>
                     <?php
-                    $row = $con->query("SELECT * FROM bacode");
+                    $con=query("SELECT * FROM bacode");
 require $_SERVER['DOCUMENT_ROOT'].'/config.php';
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 $con->query("
