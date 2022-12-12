@@ -10,6 +10,7 @@ $artikelen = $con->query("SELECT * FROM artikelen");
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link rel="icon" type="image/x-icon" href="img/logo.png">
 		<title>Home - Uitleenregistratiesysteem</title>
+		<script src="https://kit.fontawesome.com/3304b0f2b7.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="css/index.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		<script src="js/zoek.js" defer></script>
@@ -29,11 +30,16 @@ $artikelen = $con->query("SELECT * FROM artikelen");
 				</div>
 				<?php } ?>
 			</div>
-			<?php if ($_GET['id']){
-			$artikelen = $con->query("SELECT * FROM artikelen WHERE id='".$_GET['id']."'");
+			<?php if (isset($_GET['id'])){
+				$artikel = $con->query("SELECT * FROM artikelen WHERE id='".$_GET['id']."'");
 			?>
 			<div class="dartikel">
-
+				<i class="fa-solid fa-x dsluit" onclick="dsluiten()"></i>
+				<?php while ($row = $artikel->fetch_assoc()) { ?>
+				<img src="<?= $row['img'] ?>"><br>
+				<a><?= $row['naam'] ?></a>
+				<a></a>
+				<?php } ?>
 			</div>
 			<?php } ?>
 		</div>

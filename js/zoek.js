@@ -7,6 +7,9 @@ $(document).ready(function(){
     });
 });
 
-function locatie(loc) {
+function locatie(loc){
     location.href = `?id=`+loc;
+}
+function dsluiten(){
+    location.href = `/`;
 }

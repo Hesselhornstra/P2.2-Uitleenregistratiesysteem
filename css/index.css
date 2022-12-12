@@ -20,12 +20,12 @@ body {
 }
 #zoekinput::placeholder{
     position: relative;
-    left: 0.5vw;
+    text-align: center;
     color: gray;
 }
 #zoekinput:focus{/* deze sloopt het */
     position: relative;
-    left: 0.5vw;
+    text-align: center;
     color: #fff;
 }
 .alleartikelen{
@@ -44,6 +44,7 @@ body {
     position: relative;
     width: 15vw;
     height: 15vw;
+    background-color: #2c2f33;
     border: #fff solid 0.05vw;
     box-shadow: 0.1vw 0.1vw 0.1vw gray;
     border-radius: 0.6vw;
@@ -65,5 +66,35 @@ body {
     font-size: 1.1vw;
 }
 .dartikel{
-    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 35vw;
+    background-color: #2c2f33;
+    border: #fff solid 0.05vw;
+    box-shadow: 0.1vw 0.1vw 0.1vw gray;
+    border-radius: 0.6vw;
+    margin: 0.5vw;
+}
+.dartikel img{
+    position: relative;
+    width: 22vw;
+    height: 15vw;
+    border-top-left-radius: 0.6vw;
+    border-bottom-right-radius: 0.6vw;
+}
+.dartikel a{
+    margin: 0.6vw;
+    font-size: 1.1vw;
+}
+.dsluit{
+    position: absolute;
+    top: 0.5vw;
+    right: 1vw;
+    font-size: 2vw;
+}
+.dsluit:hover{
+    cursor: pointer;
 }
