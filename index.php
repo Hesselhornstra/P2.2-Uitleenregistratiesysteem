@@ -24,22 +24,65 @@ $artikelen = $con->query("SELECT * FROM artikelen");
 				<?php
 				while ($row = $artikelen->fetch_assoc()) {
 				?>
-				<div class="artikel" onclick="locatie(<?= $row['id'] ?>)">
+				<div class="artikel" onclick="locatie(<?= $row['barcode'] ?>)">
 					<img src="<?= $row['img'] ?>"><br>
 					<a><?= $row['naam'] ?></a>
 				</div>
 				<?php } ?>
 			</div>
-			<?php if (isset($_GET['id'])){
-				$artikel = $con->query("SELECT * FROM artikelen WHERE id='".$_GET['id']."'");
+			<?php if (isset($_GET['zoek'])){
+				$artikel = $con->query("SELECT * FROM artikelen WHERE barcode='".$_GET['zoek']."'");
 			?>
 			<div class="dartikel">
 				<i class="fa-solid fa-x dsluit" onclick="dsluiten()"></i>
 				<?php while ($row = $artikel->fetch_assoc()) { ?>
 				<img src="<?= $row['img'] ?>"><br>
-				<a><?= $row['naam'] ?></a>
-				<a></a>
-				<?php } ?>
+				<a class="naam"><?= $row['naam'] ?></a>
+				<a class="info"><?= $row['info'] ?></a>
+				<div class="omhulsol">
+				<?php require 'vendor/autoload.php'; $generator = new Picqer\Barcode\BarcodeGeneratorHTML(); ?>
+				<a class="barcode"><?php echo $generator->getBarcode($row['barcode'], $generator::TYPE_CODE_128); ?></a>
+				</div>
+				<form method="POST" id="uitleenform">
+					<input type="hidden" name="form" value="uitlenen">
+					<input type="hidden" name="barcode" value="<?= $row['barcode'] ?>">
+					<label>Naam:</label><br>
+					<input type="text" name="naam" placeholder="Naam" required><br>
+					<label>Mail:</label><br>
+					<input type="mail" name="mail" placeholder="Email" required><br>
+					<label>Datum uitleen:</label><br>
+					<input type="date" name="datumge" placeholder="Datum geleend" onclick="this.showPicker();" value="<?= date("Y-m-d") ?>" required><br>
+					<label>Datum Retourneer:</label><br>
+					<input type="date" name="datumte" placeholder="Datum terug" onclick="this.showPicker();" value="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+14, date("Y"))) ?>" required><br><br>
+					<button type="submit">Uitlenen</button>
+				</form>
+				<?php } $artikelges = $con->query("SELECT * FROM artikelges WHERE barcode='".$_GET['zoek']."'"); ?>
+				<div class="geschiedenis">
+					<?php if (!$artikelges->num_rows == 0) { ?>
+						<h1>Uitleen geschiedenis</h1>
+						<table border='1'>
+							<thead>
+								<tr>
+									<th>Naam</th>
+									<th>Uitgeleend door</th>
+									<th>Opmerking</th>
+									<th>Ingenomen door</th>
+								</tr>
+							</thead>
+							<?php while ($row = $artikelges->fetch_assoc()) { ?>
+							<tbody>
+								<tr>
+									<td><?php echo $row['naam'] ?></td>
+									<td><?php echo $row['uitgedoor'] ?></td>
+									<td><?php echo $row['opmerking'] ?></td>
+									<td><?php echo $row['ingedoor'] ?></td>
+								</tr>
+							</tbody>
+							<?php } } else { ?>
+							<caption><strong>Er is geen geschiedenis voor dit artikel</strong></caption>
+						</table>
+					<?php } ?>
+				</div>
 			</div>
 			<?php } ?>
 		</div>

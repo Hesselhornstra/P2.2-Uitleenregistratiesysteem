@@ -85,9 +85,44 @@ body {
     border-top-left-radius: 0.6vw;
     border-bottom-right-radius: 0.6vw;
 }
-.dartikel a{
-    margin: 0.6vw;
+.dartikel .naam{
+    position: absolute;
+    top: 16vw;
+    left: 1vw;
+    height: 1.3vw;
+    width: 20vw;
+    background-color: #fff;
+    border-radius: 0.4vw;
+    color: #000;
     font-size: 1.1vw;
+    text-align: center;
+}
+.dartikel .info{
+    position: absolute;
+    top: 18vw;
+    left: 1vw;
+    height: 12vw;
+    width: 20vw;
+    background-color: #fff;
+    border-radius: 0.4vw;
+    color: #000;
+    text-align: center;
+    font-size: 1.1vw;
+}
+.dartikel .omhulsol{
+    position: absolute;
+    bottom: 1vw;
+    left: 1vw;
+    height: 3vw;
+    width: 20vw;
+    background-color: #fff;
+    border-radius: 0.4vw;
+}
+.dartikel .omhulsol .barcode{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .dsluit{
     position: absolute;
@@ -97,4 +132,23 @@ body {
 }
 .dsluit:hover{
     cursor: pointer;
+}
+#uitleenform{
+    position: absolute;
+    top: 3vw;
+    right: 1vw;
+}
+.geschiedenis{
+    position: fixed;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    height: fit-content;
+    background-color: #2c2f33;
+    border: #fff solid 0.05vw;
+    box-shadow: 0.1vw 0.1vw 0.1vw gray;
+    border-radius: 0.6vw;
+    text-align: center;
+    margin-top: 1vw;
 }

@@ -8,7 +8,7 @@ $(document).ready(function(){
 });
 
 function locatie(loc){
-    location.href = `?id=`+loc;
+    location.href = `?zoek=`+loc;
 }
 function dsluiten(){
     location.href = `/`;
