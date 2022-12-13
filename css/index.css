@@ -23,7 +23,7 @@ body {
     text-align: center;
     color: gray;
 }
-#zoekinput:focus{/* deze sloopt het */
+#zoekinput:focus{
     position: relative;
     text-align: center;
     color: #fff;

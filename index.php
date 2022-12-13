@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<label>Datum uitleen:</label><br>
 					<input type="date" name="datumge" placeholder="Datum geleend" onclick="this.showPicker();" value="<?= date("Y-m-d") ?>" required><br>
 					<label>Datum Retourneer:</label><br>
-					<input type="date" name="datumte" placeholder="Datum terug" onclick="this.showPicker();" value="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+14, date("Y"))) ?>" required><br><br>
+					<input type="date" name="datumte" placeholder="Datum terug" onclick="this.showPicker();" value="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+14, date("Y"))) ?>" min="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"))) ?>" required><br><br>
 					<button type="submit">Uitlenen</button>
 				</form>
 				<?php } $artikelges = $con->query("SELECT * FROM artikelges WHERE barcode='".$_GET['zoek']."'"); ?>
