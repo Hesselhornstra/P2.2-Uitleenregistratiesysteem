@@ -60,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<div class="omhulsol">
 				<?php require 'vendor/autoload.php'; $generator = new Picqer\Barcode\BarcodeGeneratorHTML(); ?>
 				<a class="barcode"><?php echo $generator->getBarcode($row['barcode'], $generator::TYPE_CODE_128); ?></a>
+				<a class="barcoden"><?php echo $row['barcode']; ?></a>
 				</div>
 				<form method="POST" id="uitleenform">
 					<input type="hidden" name="form" value="uitlenen">
