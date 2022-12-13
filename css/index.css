@@ -152,3 +152,7 @@ body {
     text-align: center;
     margin-top: 1vw;
 }
+.geschiedenis table tbody tr td a{
+    color: #fff;
+    text-decoration: none;
+}

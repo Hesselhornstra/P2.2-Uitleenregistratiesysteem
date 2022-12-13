@@ -1,6 +1,24 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'].'/config.php';
 $artikelen = $con->query("SELECT * FROM artikelen");
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if ($_POST['form'] == "uitlenen") {
+		$con->query("INSERT INTO artikeluit (
+			barcode,
+			naam,
+			mail,
+			datumuit,
+			datumin,
+			uitgedoor
+			) VALUES (
+			'".$con->real_escape_string($_POST['barcode'])."',
+			'".$con->real_escape_string($_POST['naam'])."',
+			'".$con->real_escape_string($_POST['mail'])."',
+			'".$con->real_escape_string($_POST['datumge'])."',
+			'".$con->real_escape_string($_POST['datumte'])."',
+			'".$con->real_escape_string($_SESSION['name'])."')");
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -60,10 +78,12 @@ $artikelen = $con->query("SELECT * FROM artikelen");
 				<div class="geschiedenis">
 					<?php if (!$artikelges->num_rows == 0) { ?>
 						<h1>Uitleen geschiedenis</h1>
+						<center>
 						<table border='1'>
 							<thead>
 								<tr>
 									<th>Naam</th>
+									<th>Mail</th>
 									<th>Uitgeleend door</th>
 									<th>Opmerking</th>
 									<th>Ingenomen door</th>
@@ -73,6 +93,7 @@ $artikelen = $con->query("SELECT * FROM artikelen");
 							<tbody>
 								<tr>
 									<td><?php echo $row['naam'] ?></td>
+									<td><a href="mailto:<?php echo $row['mail'] ?>"><?php echo $row['mail'] ?></a></td>
 									<td><?php echo $row['uitgedoor'] ?></td>
 									<td><?php echo $row['opmerking'] ?></td>
 									<td><?php echo $row['ingedoor'] ?></td>
@@ -81,6 +102,7 @@ $artikelen = $con->query("SELECT * FROM artikelen");
 							<?php } } else { ?>
 							<caption><strong>Er is geen geschiedenis voor dit artikel</strong></caption>
 						</table>
+						</center>
 					<?php } ?>
 				</div>
 			</div>
