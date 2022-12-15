@@ -1,3 +1,7 @@
-.grote {
-	width: 200px;
+.box {
+	border-style: solid;
+
+	width: auto;
+	    
+	height: auto;
 }
