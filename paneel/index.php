@@ -76,5 +76,25 @@ if ($_SESSION['loggedin'] != true) {
 		</center> <br><br><br><br>
 		<hr>
 </body>
+<div style="border-style:solid;width:40%;">
+	<table border='1'>
+		<caption>Groep</caption>
+		<tr>
+			<th>Selecteer</th>
+		</tr>
+		<tr>
+			<th>Laptops</th>
+		</tr>
+		<tr>
+			<th>Tablets</th>
+		</tr>
+		<tr>
+			<th>monitoren</th>
+		</tr>
+		<tr>
+			<th>Camera's</th>
+		</tr>
+	</table>
+</div>
 
 </html>
