@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<a class="barcode"><?php echo $generator->getBarcode($artikelrow['barcode'], $generator::TYPE_CODE_128); ?></a>
 				<a class="barcoden"><?php echo $artikelrow['barcode']; ?></a>
 				</div>
-				<?php if ($_SESSION['loggedin'] == true){ ?>
+				<?php if (isset($_SESSION['loggedin']) == true){ ?>
 					<form method="POST" id="uitleenform">
 						<input type="hidden" name="form" value="uitlenen">
 						<input type="hidden" name="barcode" value="<?= $artikelrow['barcode'] ?>">
