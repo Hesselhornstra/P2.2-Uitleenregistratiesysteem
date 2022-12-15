@@ -48,17 +48,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<?php if (!isset($_GET['categorie'])){ ?>
 				<?php while ($row = $categorieen->fetch_assoc()) { ?>
 				<div class="artikel" onclick="categorie('<?= $row['naam'] ?>')">
-					<img src="<?= $row['img'] ?>"><br>
+					<img src="<?= $row['img'] ?>" alt="<?= $row['naam'] ?>"><br>
 					<a><?= $row['naam'] ?></a>
 				</div>
 				<?php }} else {
 				$artikelen = $con->query("SELECT * FROM artikelen WHERE cate='".$_GET['categorie']."' ORDER BY naam ASC");
 				if (!$artikelen->num_rows == 0) {
 					while ($row = $artikelen->fetch_assoc()) {
-					$uitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$row['barcode']."'");
+					$uitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$row['barcode']."' AND datumuit <= CURRENT_DATE()");
 					?>
 					<div class="artikel" onclick="locatie('<?= $row['cate'] ?>', <?= $row['barcode'] ?>)">
-						<img src="<?= $row['img'] ?>"><br>
+						<img src="<?= $row['img'] ?>" alt="<?= $row['naam'] ?>"><br>
 						<a><?= $row['naam'] ?></a>
 						<?php if (!$uitgeleend->num_rows == 0) {?>
 							<div class="uitgeleend"><a>Uitgeleend</a></div>
@@ -71,13 +71,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				$artikelrow = $artikel->fetch_assoc()
 			?>
 			<div class="dartikel">
-				<i class="fa-solid fa-x dsluit" onclick="categorie('<?=$_GET['categorie']?>')"></i>
+				<?php if (isset($_GET['categorie'])){ ?>
+					<i class="fa-solid fa-x dsluit" onclick="categorie('<?=$_GET['categorie']?>')"></i>
+				<?php }else{?><i class="fa-solid fa-x dsluit" onclick="terug()"></i><?php }?>
 				<?php				
-				$duitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$artikelrow['barcode']."'");
+				$duitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$artikelrow['barcode']."' AND datumuit <= CURRENT_DATE()");
 				if (!$duitgeleend->num_rows == 0) {?>
 					<div class="duitgeleend"><a>Uitgeleend</a></div>
 				<?php }?>
-				<img src="<?= $artikelrow['img'] ?>"><br>
+				<img src="<?= $artikelrow['img'] ?>" alt="<?= $artikelrow['naam'] ?>"><br>
 				<a class="naam"><?= $artikelrow['naam'] ?></a>
 				<a class="info"><?= $artikelrow['info'] ?></a>
 				<div class="omhulsol">
