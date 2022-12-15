@@ -225,7 +225,6 @@ body {
     border-color: #fff;
 }
 /* scroll balk */
-/* scroll balk */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -238,3 +237,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+/* scroll balk */
