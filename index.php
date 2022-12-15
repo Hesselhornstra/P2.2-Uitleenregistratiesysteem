@@ -1,6 +1,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'].'/config.php';
-$artikelen = $con->query("SELECT * FROM artikelen");
+$categorieen = $con->query("SELECT * FROM categorieen");
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($_POST['form'] == "uitlenen") {
 		$con->query("INSERT INTO artikeluit (
@@ -38,22 +38,45 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<form action="<?php $_SERVER["PHP_SELF"] ?>" method="GET">
 				<input type="text" name="zoek" id="zoekinput" placeholder="Zoeken...">
 			</form>
+			<?php if (isset($_GET['categorie'])){ ?>
+				<div class="catediv">
+					<h1><?= $_GET['categorie'] ?></h1>
+					<button class="terug" onclick="terug()">Terug</button>
+				</div>
+			<?php }else{?><div class="catediv"><h1>Kies een categorie</h1></div><?php } ?>
 			<div class="alleartikelen">
-				<?php
-				while ($row = $artikelen->fetch_assoc()) {
-				?>
-				<div class="artikel" onclick="locatie(<?= $row['barcode'] ?>)">
+			<?php if (!isset($_GET['categorie'])){ ?>
+				<?php while ($row = $categorieen->fetch_assoc()) { ?>
+				<div class="artikel" onclick="categorie('<?= $row['naam'] ?>')">
 					<img src="<?= $row['img'] ?>"><br>
 					<a><?= $row['naam'] ?></a>
 				</div>
-				<?php } ?>
+				<?php }} else {
+				$artikelen = $con->query("SELECT * FROM artikelen WHERE cate='".$_GET['categorie']."' ORDER BY naam ASC");
+				if (!$artikelen->num_rows == 0) {
+					while ($row = $artikelen->fetch_assoc()) {
+					$uitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$row['barcode']."'");
+					?>
+					<div class="artikel" onclick="locatie('<?= $row['cate'] ?>', <?= $row['barcode'] ?>)">
+						<img src="<?= $row['img'] ?>"><br>
+						<a><?= $row['naam'] ?></a>
+						<?php if (!$uitgeleend->num_rows == 0) {?>
+							<div class="uitgeleend"><a>Uitgeleend</a></div>
+						<?php }?>
+					</div>
+				<?php }} else {?><h1>Geen artikelen gevonden</h1><?php }} ?>
 			</div>
 			<?php if (isset($_GET['zoek'])){
 				$artikel = $con->query("SELECT * FROM artikelen WHERE barcode='".$_GET['zoek']."'");
 				$artikelrow = $artikel->fetch_assoc()
 			?>
 			<div class="dartikel">
-				<i class="fa-solid fa-x dsluit" onclick="dsluiten()"></i>
+				<i class="fa-solid fa-x dsluit" onclick="categorie('<?=$_GET['categorie']?>')"></i>
+				<?php				
+				$duitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$artikelrow['barcode']."'");
+				if (!$duitgeleend->num_rows == 0) {?>
+					<div class="duitgeleend"><a>Uitgeleend</a></div>
+				<?php }?>
 				<img src="<?= $artikelrow['img'] ?>"><br>
 				<a class="naam"><?= $artikelrow['naam'] ?></a>
 				<a class="info"><?= $artikelrow['info'] ?></a>
@@ -71,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<label>Mail:</label><br>
 						<input type="mail" name="mail" placeholder="Email" required><br>
 						<label>Datum uitleen:</label><br>
-						<input type="date" name="datumge" placeholder="Datum geleend" onclick="this.showPicker();" value="<?= date("Y-m-d") ?>" required><br>
+						<input type="date" name="datumge" placeholder="Datum geleend" onclick="this.showPicker();" value="<?= date("Y-m-d") ?>" min="<?= date("Y-m-d") ?>" required><br>
 						<label>Datum Retourneer:</label><br>
 						<input type="date" name="datumte" placeholder="Datum terug" onclick="this.showPicker();" value="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+14, date("Y"))) ?>" min="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"))) ?>" required><br><br>
 						<button type="submit">Uitlenen</button>

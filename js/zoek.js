@@ -6,10 +6,12 @@ $(document).ready(function(){
         });
     });
 });
-
-function locatie(loc){
-    location.href = `?zoek=`+loc;
+function categorie(cate){
+    location.href = `?categorie=`+cate;
 }
-function dsluiten(){
+function locatie(cate, loc){
+    location.href = `?categorie=`+cate+`&zoek=`+loc;
+}
+function terug(){
     location.href = `/`;
 }

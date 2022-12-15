@@ -65,6 +65,25 @@ body {
     margin: 0.6vw;
     font-size: 1.1vw;
 }
+.uitgeleend{
+    position: absolute;
+    top: 0;
+    width: 15vw;
+    height: 8vw;
+    border-top-left-radius: 0.6vw;
+    border-top-right-radius: 0.6vw;
+    background-color: rgba(85, 85, 85, 0.8);
+}
+.uitgeleend a{
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    transform: rotate(-30deg);
+    font-size: 2vw;
+    font-weight: bold;
+    color: rgb(165, 0, 0);
+}
 .dartikel{
     position: absolute;
     top: 50%;
@@ -131,6 +150,26 @@ body {
     transform: translate(-50%, -50%);
     color: #000;
 }
+.duitgeleend{
+    position: absolute;
+    top: 0;
+    width: 22vw;
+    height: 15vw;
+    border-top-left-radius: 0.6vw;
+    border-bottom-right-radius: 0.6vw;
+    background-color: rgba(85, 85, 85, 0.8);
+    z-index: 2;
+}
+.duitgeleend a{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    transform: rotate(-30deg);
+    font-size: 3vw;
+    font-weight: bold;
+    color: rgb(165, 0, 0);
+}
 .dsluit{
     position: absolute;
     top: 0.5vw;
@@ -162,6 +201,28 @@ body {
 .geschiedenis table tbody tr td a{
     color: #fff;
     text-decoration: none;
+}
+.catediv{
+    position: absolute;
+    top: 7vw;
+    left: 10vw;
+}
+.terug {
+    position: relative;
+    top: -2.7vw;
+    left: 6.5vw;
+    width: 7vw;
+    height: 3vh;
+    background-color: #176292;
+    color: #fff;
+    border: gray solid 0.1vw;
+    border-radius: 0.3vw;
+    margin-bottom: 4vw;
+}
+.terug:hover {
+    cursor: pointer;
+    background-color: #0D334C;
+    border-color: #fff;
 }
 /* scroll balk */
 /* scroll balk */

@@ -26,17 +26,18 @@ CREATE TABLE IF NOT EXISTS `artikelen` (
   `info` varchar(255) NOT NULL DEFAULT '',
   `img` varchar(255) DEFAULT NULL,
   `barcode` int(11) NOT NULL,
+  `cate` varchar(255) NOT NULL DEFAULT 'Overige',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- Dumpen data van tabel uitleensysteem.artikelen: ~6 rows (ongeveer)
-INSERT INTO `artikelen` (`id`, `naam`, `info`, `img`, `barcode`) VALUES
-	(1, 'Acer', 'Info', 'https://cdn.discordapp.com/attachments/1032390738069159957/1038852627053686934/image.png', 1),
-	(2, 'Samsung', 'Info', 'https://cdn.discordapp.com/attachments/1032390738069159957/1037457101347369060/unknown.png', 2),
-	(3, 'Lenovo', 'Info', 'https://cdn.discordapp.com/attachments/1032390738069159957/1034563102009720852/unknown.png', 3),
-	(4, 'Apple', 'Info', 'https://cdn.discordapp.com/attachments/1032390738069159957/1034549292351885422/unknown.png', 4),
-	(5, 'Macbook', 'Info', 'https://cdn.discordapp.com/attachments/1032390738069159957/1034549292351885422/unknown.png', 5),
-	(6, 'Wist geen merk meer', 'Info', 'https://cdn.discordapp.com/attachments/1032390738069159957/1034549292351885422/unknown.png', 6);
+INSERT INTO `artikelen` (`id`, `naam`, `info`, `img`, `barcode`, `cate`) VALUES
+	(1, 'Acer', 'Info', 'https://th.bing.com/th/id/OIP.sKHKQa51KvFmiGKB259gKQHaFX?w=279&h=202&c=7&r=0&o=5&dpr=1.3&pid=1.7', 1, 'Laptops'),
+	(2, 'Samsung', 'Info', 'https://th.bing.com/th/id/R.9b32fb545298c9666dd4e83301105f9d?rik=pT%2bls36iah421A&pid=ImgRaw&r=0', 2, 'Laptops'),
+	(3, 'Lenovo', 'Info', 'https://th.bing.com/th/id/OIP.fo5Nz7oAjvmGU3TY0h5AxwHaHa?pid=ImgDet&rs=1', 3, 'Laptops'),
+	(4, 'Apple', 'Info', 'https://th.bing.com/th/id/OIP.IKcadL2WTD2Aa6_fDbY3VAHaEo?w=256&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7', 4, 'Laptops'),
+	(5, 'Macbook', 'Info', 'https://th.bing.com/th/id/OIP.755wzhwdxHb016IJ3KCVIwHaFc?pid=ImgDet&rs=1', 5, 'Laptops'),
+	(6, 'Asus', 'Info', 'https://th.bing.com/th/id/R.96aa915e6a00d5a006adcaa40331624f?rik=bdJrYbz389LhQA&riu=http%3a%2f%2f1.bp.blogspot.com%2f-p_NeRfUSuSk%2fT7zPgaQPSvI%2fAAAAAAAADeA%2fkqgKFuAE6xI%2fs1600%2fASUS%2bN75SF-DH71.jpg&ehk=F1QyX66MMvpOoFnMHoayicOt1bttwYTJg6jQCVzqCYM%3d&', 6, 'Laptops');
 
 -- Structuur van  tabel uitleensysteem.artikelges wordt geschreven
 CREATE TABLE IF NOT EXISTS `artikelges` (
@@ -64,11 +65,28 @@ CREATE TABLE IF NOT EXISTS `artikeluit` (
   `datumin` varchar(255) NOT NULL DEFAULT '',
   `uitgedoor` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Dumpen data van tabel uitleensysteem.artikeluit: ~1 rows (ongeveer)
+-- Dumpen data van tabel uitleensysteem.artikeluit: ~3 rows (ongeveer)
 INSERT INTO `artikeluit` (`id`, `barcode`, `naam`, `mail`, `datumuit`, `datumin`, `uitgedoor`) VALUES
-	(1, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-27', 'ingelogged user');
+	(1, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-27', 'ingelogged user'),
+	(2, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-15', 'ingelogged user'),
+	(3, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-14', 'ingelogged user'),
+	(4, 2, 'Thomas', 'thomas@mail.com', '2022-12-15', '2022-12-29', 'Hessel');
+
+-- Structuur van  tabel uitleensysteem.categorieen wordt geschreven
+CREATE TABLE IF NOT EXISTS `categorieen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `naam` varchar(255) NOT NULL DEFAULT '',
+  `img` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+-- Dumpen data van tabel uitleensysteem.categorieen: ~3 rows (ongeveer)
+INSERT INTO `categorieen` (`id`, `naam`, `img`) VALUES
+	(1, 'Laptops', 'https://th.bing.com/th/id/R.67af9d30db5892b1471f61b840b38879?rik=G13jlJ4tY%2b1w3Q&pid=ImgRaw&r=0'),
+	(2, 'Kabels', 'https://th.bing.com/th/id/OIP.4xKMLKPQ-XCvCKgCXo39XwHaE8?pid=ImgDet&rs=1'),
+	(3, 'Overige', 'https://deac.nl/application/files/1215/8564/3481/Trotse_dealer_van_overige_machines_en_apparatuur.jpg');
 
 -- Structuur van  tabel uitleensysteem.users wordt geschreven
 CREATE TABLE IF NOT EXISTS `users` (
@@ -76,9 +94,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- Dumpen data van tabel uitleensysteem.users: ~0 rows (ongeveer)
+INSERT INTO `users` (`id`, `name`, `password`) VALUES
+	(1, 'Hessel', '$2y$10$xYZFuxCmjLrIvpOc5xzT6e.EIURa5Xp4VBrKGM/Gb529l3.0bDHKi');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
