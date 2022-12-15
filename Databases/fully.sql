@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `artikelges` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumpen data van tabel uitleensysteem.artikelges: ~2 rows (ongeveer)
+-- Dumpen data van tabel uitleensysteem.artikelges: ~1 rows (ongeveer)
 INSERT INTO `artikelges` (`id`, `barcode`, `naam`, `mail`, `uitgedoor`, `opmerking`, `ingedoor`) VALUES
 	(1, 1, 'Dimitri', 'dimitri@mail.com', 'King', 'Er zit een kras op de onderkant', 'De boer');
 
@@ -67,12 +67,12 @@ CREATE TABLE IF NOT EXISTS `artikeluit` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Dumpen data van tabel uitleensysteem.artikeluit: ~3 rows (ongeveer)
+-- Dumpen data van tabel uitleensysteem.artikeluit: ~4 rows (ongeveer)
 INSERT INTO `artikeluit` (`id`, `barcode`, `naam`, `mail`, `datumuit`, `datumin`, `uitgedoor`) VALUES
-	(1, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-27', 'ingelogged user'),
-	(2, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-15', 'ingelogged user'),
-	(3, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-14', 'ingelogged user'),
-	(4, 2, 'Thomas', 'thomas@mail.com', '2022-12-15', '2022-12-29', 'Hessel');
+	(1, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-27', 'Hessel'),
+	(2, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-15', 'Hessel'),
+	(3, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-14', 'Hessel'),
+	(4, 2, 'Thomas', 'thomas@mail.com', '2022-12-13', '2022-12-29', 'Hessel');
 
 -- Structuur van  tabel uitleensysteem.categorieen wordt geschreven
 CREATE TABLE IF NOT EXISTS `categorieen` (
@@ -96,9 +96,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumpen data van tabel uitleensysteem.users: ~0 rows (ongeveer)
+-- Dumpen data van tabel uitleensysteem.users: ~3 rows (ongeveer)
 INSERT INTO `users` (`id`, `name`, `password`) VALUES
-	(1, 'Hessel', '$2y$10$xYZFuxCmjLrIvpOc5xzT6e.EIURa5Xp4VBrKGM/Gb529l3.0bDHKi');
+	(1, 'Hessel', '$2y$10$xYZFuxCmjLrIvpOc5xzT6e.EIURa5Xp4VBrKGM/Gb529l3.0bDHKi'),
+	(2, 'Dimitri', '$2y$10$xYZFuxCmjLrIvpOc5xzT6e.EIURa5Xp4VBrKGM/Gb529l3.0bDHKi'),
+	(3, 'Thomas', '$2y$10$xYZFuxCmjLrIvpOc5xzT6e.EIURa5Xp4VBrKGM/Gb529l3.0bDHKi');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

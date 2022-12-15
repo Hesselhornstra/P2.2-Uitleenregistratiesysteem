@@ -4,7 +4,149 @@ body {
     background-color: #23272a;
     color: #fff;
 }
-
+.paneel {
+    position: relative;
+    top: 0.3vw;
+    left: 0.3vw;
+    width: 8vw;
+    height: 4vh;
+    background-color: #176292;
+    color: #fff;
+    border: gray solid 0.1vw;
+    border-radius: 0.3vw;
+    margin-bottom: 1vw;
+}
+.paneel:hover {
+    cursor: pointer;
+    background-color: #0D334C;
+    border-color: #fff;
+}
+.dartikel{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 35vw;
+    background-color: #2c2f33;
+    border: #fff solid 0.05vw;
+    box-shadow: 0.1vw 0.1vw 0.1vw gray;
+    border-radius: 0.6vw;
+    margin: 0.5vw;
+}
+.dartikel img{
+    position: relative;
+    width: 22vw;
+    height: 15vw;
+    border-top-left-radius: 0.6vw;
+    border-bottom-right-radius: 0.6vw;
+}
+.dartikel .naam{
+    position: absolute;
+    top: 16vw;
+    left: 1vw;
+    height: 1.3vw;
+    width: 20vw;
+    background-color: #fff;
+    border-radius: 0.4vw;
+    color: #000;
+    font-size: 1.1vw;
+    text-align: center;
+}
+.dartikel .info{
+    position: absolute;
+    top: 18vw;
+    left: 1vw;
+    height: 12vw;
+    width: 20vw;
+    background-color: #fff;
+    border-radius: 0.4vw;
+    color: #000;
+    text-align: center;
+    font-size: 1.1vw;
+}
+.dartikel .omhulsol{
+    position: absolute;
+    bottom: 1vw;
+    left: 1vw;
+    height: 3.5vw;
+    width: 20vw;
+    background-color: #fff;
+    border-radius: 0.4vw;
+}
+.dartikel .omhulsol .barcode{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.dartikel .omhulsol .barcoden{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+}
+.dsluit{
+    position: absolute;
+    top: 0.5vw;
+    right: 1vw;
+    font-size: 2vw;
+}
+.dsluit:hover{
+    cursor: pointer;
+}
+#uitleenform{
+    position: absolute;
+    top: 3vw;
+    right: 1vw;
+}
+.geschiedenis{
+    position: fixed;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    height: fit-content;
+    background-color: #2c2f33;
+    border: #fff solid 0.05vw;
+    box-shadow: 0.1vw 0.1vw 0.1vw gray;
+    border-radius: 0.6vw;
+    text-align: center;
+    margin-top: 1vw;
+}
+.geschiedenis table tbody tr td a{
+    color: #fff;
+    text-decoration: none;
+}
+/* alerts */
+.alert {
+	position: absolute;
+    top: 1vw;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1vw;
+    width: 80vw;
+	padding: 20px;
+	background-color: #f44336;
+	color: white;
+	margin: 15px;
+	z-index: 2;
+}
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+.closebtn:hover {
+	color: black;
+}
+/* alerts */
 /* scroll balk */
 ::-webkit-scrollbar {
     width: 10px;
