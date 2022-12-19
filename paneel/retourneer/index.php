@@ -32,7 +32,7 @@ $retourges = $con->query("SELECT * FROM artikelges WHERE barcode='".$_GET['barco
 			<a class="naam"><?= $retourrow['naam'] ?></a>
 			<a class="info"><br>Datum uit geleend:<br><?= $retourrow['datumuit'] ?><br><br><br>Datum terug verwacht:<br><?= $retourrow['datumin'] ?></a>
 			<div class="omhulsol">
-			<?php require 'vendor/autoload.php'; $generator = new Picqer\Barcode\BarcodeGeneratorHTML(); ?>
+			<?php require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php'; $generator = new Picqer\Barcode\BarcodeGeneratorHTML(); ?>
 			<a class="barcode"><?php echo $generator->getBarcode($retourrow['barcode'], $generator::TYPE_CODE_128); ?></a>
 			<a class="barcoden"><?php echo $retourrow['barcode']; ?></a>
 			</div>
