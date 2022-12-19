@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<input type="date" name="datumte" placeholder="Datum terug" onclick="this.showPicker();" value="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+14, date("Y"))) ?>" min="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"))) ?>" required><br><br>
 						<button type="submit">Uitlenen</button>
 					</form>
-					<button class="retour" type="submit" onclick= "<?php Header("Location: /paneel/retourneer")?>">retourneer</button>
+					<button class="retour" onclick="location.href = `/paneel/retourneer`">retourneer</button>
 					<?php $artikelges = $con->query("SELECT * FROM artikelges WHERE barcode='".$_GET['zoek']."'"); ?>
 					<div class="geschiedenis">
 						<?php if (!$artikelges->num_rows == 0) { ?>
