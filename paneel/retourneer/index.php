@@ -6,11 +6,13 @@ if ($_SESSION['loggedin'] != true) {
 if (!isset($_GET['barcode'])){
 	echo '<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display=`none`;">&times;</span>Er is iets fout gegaan probeer later op nieuw.</div>';
 }
-$retour = $con->query("SELECT * FROM artikeluit WHERE barcode='".$_GET['barcode']."'");
-$retourrow = $retour->fetch_assoc();
-$retourinfo = $con->query("SELECT * FROM artikelen WHERE barcode='".$_GET['barcode']."'");
-$retourinforow = $retourinfo->fetch_assoc();
-$retourges = $con->query("SELECT * FROM artikelges WHERE barcode='".$_GET['barcode']."'");
+if (isset($_GET['barcode'])){
+	$retour = $con->query("SELECT * FROM artikeluit WHERE barcode='".$_GET['barcode']."'");
+	$retourrow = $retour->fetch_assoc();
+	$retourinfo = $con->query("SELECT * FROM artikelen WHERE barcode='".$_GET['barcode']."'");
+	$retourinforow = $retourinfo->fetch_assoc();
+	$retourges = $con->query("SELECT * FROM artikelges WHERE barcode='".$_GET['barcode']."'");
+}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -28,6 +30,7 @@ $retourges = $con->query("SELECT * FROM artikelges WHERE barcode='".$_GET['barco
 		<button class="paneel" onclick="location.href = `/paneel`">Paneel</button>
 		<hr>
 		<div class="dartikel">
+			<?php if (isset($_GET['barcode'])){ if ($retour->num_rows == 0) {echo '<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display=`none`;">&times;</span>Kon geen artikel vinden!</div>';}else{ ?>
 			<img src="<?= $retourinforow['img'] ?>" alt="<?= $retourrow['naam'] ?>"><br>
 			<a class="naam"><?= $retourrow['naam'] ?></a>
 			<a class="info"><br>Datum uit geleend:<br><?= $retourrow['datumuit'] ?><br><br><br>Datum terug verwacht:<br><?= $retourrow['datumin'] ?></a>
@@ -66,6 +69,7 @@ $retourges = $con->query("SELECT * FROM artikelges WHERE barcode='".$_GET['barco
 					</center>
 				<?php } ?>
 			</div>
+			<?php }} ?>
 		</div>
 	</body>
 </html>

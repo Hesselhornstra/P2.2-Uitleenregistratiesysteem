@@ -68,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			</div>
 			<?php if (isset($_GET['zoek'])){
 				$artikel = $con->query("SELECT * FROM artikelen WHERE barcode='".$_GET['zoek']."'");
+			if ($artikel->num_rows == 0) {echo '<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display=`none`;">&times;</span>Kon geen artikel vinden!</div>';}else{
 				$artikelrow = $artikel->fetch_assoc()
 			?>
 			<div class="dartikel">
@@ -137,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<?php } ?>
 				</div>
 			</div>
-			<?php } ?>
+			<?php }} ?>
 		</div>
 	</body>
 </html>
