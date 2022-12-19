@@ -13,6 +13,26 @@ if (isset($_GET['barcode'])){
 	$retourinforow = $retourinfo->fetch_assoc();
 	$retourges = $con->query("SELECT * FROM artikelges WHERE barcode='".$_GET['barcode']."'");
 }
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if ($_POST['form'] == "retour") {
+		$con->query("INSERT INTO artikelges (
+			barcode,
+			naam,
+			mail,
+			uitgedoor,
+			opmerking,
+			ingedoor
+			) VALUES (
+			'".$con->real_escape_string($_GET['barcode'])."',
+			'".$con->real_escape_string($_POST['naam'])."',
+			'".$con->real_escape_string($_POST['mail'])."',
+			'".$con->real_escape_string($_POST['uitgedoor'])."',
+			'".$con->real_escape_string($_POST['opmerking'])."',
+			'".$con->real_escape_string($_SESSION['name'])."')");
+		$con->query("DELETE FROM artikeluit WHERE barcode='".$_GET['barcode']."'");
+		Header("Location: /paneel");
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -33,12 +53,15 @@ if (isset($_GET['barcode'])){
 			<?php if (isset($_GET['barcode'])){ if ($retour->num_rows == 0) {echo '<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display=`none`;">&times;</span>Kon geen artikel vinden!</div>';}else{ ?>
 			<img src="<?= $retourinforow['img'] ?>" alt="<?= $retourrow['naam'] ?>"><br>
 			<a class="naam"><?= $retourrow['naam'] ?></a>
-			<form type="post">
-			<textarea class="opmerking" placeholder="opmerking" required="required"></textarea>
-			<button class="retour" type="submit"> retour nemen</button>
-			<form>
+			<form method="POST">
+				<input type="hidden" name="form" value="retour">
+				<input type="hidden" name="naam" value="<?= $retourrow['naam'] ?>">
+				<input type="hidden" name="mail" value="<?= $retourrow['mail'] ?>">
+				<input type="hidden" name="uitgedoor" value="<?= $retourrow['uitgedoor'] ?>">
+				<textarea class="opmerking" name="opmerking" placeholder="opmerking" required="required"></textarea>
+				<button class="retour" type="submit"> retour nemen</button>
+			</form>
 			<a class="info"><br>Datum uit geleend:<br><?= $retourrow['datumuit'] ?><br><br><br>Datum terug verwacht:<br><?= $retourrow['datumin'] ?></a>
-			
 			<div class="omhulsol">
 			<?php require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php'; $generator = new Picqer\Barcode\BarcodeGeneratorHTML(); ?>
 			<a class="barcode"><?php echo $generator->getBarcode($retourrow['barcode'], $generator::TYPE_CODE_128); ?></a>
