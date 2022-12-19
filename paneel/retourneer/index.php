@@ -34,6 +34,7 @@ if (isset($_GET['barcode'])){
 			<img src="<?= $retourinforow['img'] ?>" alt="<?= $retourrow['naam'] ?>"><br>
 			<a class="naam"><?= $retourrow['naam'] ?></a>
 			<a class="info"><br>Datum uit geleend:<br><?= $retourrow['datumuit'] ?><br><br><br>Datum terug verwacht:<br><?= $retourrow['datumin'] ?></a>
+			<textarea class="opmerking" placeholder="opmerking" required="required"></textarea>
 			<div class="omhulsol">
 			<?php require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php'; $generator = new Picqer\Barcode\BarcodeGeneratorHTML(); ?>
 			<a class="barcode"><?php echo $generator->getBarcode($retourrow['barcode'], $generator::TYPE_CODE_128); ?></a>

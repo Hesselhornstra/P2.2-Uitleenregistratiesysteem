@@ -284,3 +284,8 @@ body {
 .retour{
     float: right;
 }
+.opmerking{
+    float: right;
+    width: 20vw;
+    height: 20vw;
+}
