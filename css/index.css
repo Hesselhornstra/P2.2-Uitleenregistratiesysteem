@@ -218,6 +218,7 @@ body {
     border: gray solid 0.1vw;
     border-radius: 0.3vw;
     margin-bottom: 4vw;
+    margin-left: 66.9vw;
 }
 .terug:hover {
     cursor: pointer;
