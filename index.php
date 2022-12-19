@@ -76,8 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<?php }else{?><i class="fa-solid fa-x dsluit" onclick="terug()"></i><?php }?>
 				<?php				
 				$duitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$artikelrow['barcode']."' AND datumuit <= CURRENT_DATE()");
-				if (!$duitgeleend->num_rows == 0) {?>
+				if (!$duitgeleend->num_rows == 0) {
+					$duitgeleendrow = $duitgeleend->fetch_assoc() ?>
 					<div class="duitgeleend"><a>Uitgeleend</a></div>
+					<div class="duitgeleenda"><a><?= $duitgeleendrow['datumin'] ?></a></div>
 				<?php }?>
 				<img src="<?= $artikelrow['img'] ?>" alt="<?= $artikelrow['naam'] ?>"><br>
 				<a class="naam"><?= $artikelrow['naam'] ?></a>

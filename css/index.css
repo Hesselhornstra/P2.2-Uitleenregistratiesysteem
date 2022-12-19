@@ -170,6 +170,21 @@ body {
     font-weight: bold;
     color: rgb(165, 0, 0);
 }
+.duitgeleenda{
+    position: absolute;
+    top: 0;
+    width: 22vw;
+    height: 15vw;
+    z-index: 2;
+}
+.duitgeleenda a{
+    position: absolute;
+    top: 85%;
+    left: 30%;
+    font-size: 2vw;
+    font-weight: bold;
+    color: rgb(165, 0, 0);
+}
 .dsluit{
     position: absolute;
     top: 0.5vw;
