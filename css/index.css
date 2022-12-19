@@ -254,3 +254,6 @@ body {
     background: #555;
 }
 /* scroll balk */
+.retour{
+    float: right;
+}
