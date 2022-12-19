@@ -240,6 +240,33 @@ body {
     background-color: #0D334C;
     border-color: #fff;
 }
+/* alerts */
+.alert {
+	position: absolute;
+    top: 1vw;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1vw;
+    width: 80vw;
+	padding: 20px;
+	background-color: #f44336;
+	color: white;
+	margin: 15px;
+	z-index: 2;
+}
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+.closebtn:hover {
+	color: black;
+}
 /* scroll balk */
 ::-webkit-scrollbar {
     width: 10px;
