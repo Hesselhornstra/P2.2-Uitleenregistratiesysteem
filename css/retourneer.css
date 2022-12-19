@@ -120,9 +120,12 @@ body {
     text-decoration: none;
 }
 .opmerking{
+    position: relative;
     float: right;
-    width: 20vw;
-    height: 20vw;
+    width: 15vw;
+    height: 10vw;
+    top: -14.8vw;
+    left: -1vw;
 }
 /* alerts */
 .alert {
@@ -133,11 +136,28 @@ body {
     height: 1vw;
     width: 80vw;
 	padding: 20px;
-	background-color: #f44336;
+	animation: colorRotate .45s linear 0s infinite;
 	color: white;
 	margin: 15px;
 	z-index: 2;
 }
+@keyframes colorRotate {
+    from {
+        background-color: #6666ff;
+    }
+    10% {
+        background-color: #0099ff;
+    }
+    50% {
+        background-color: #00ff00;
+    }
+    75% {
+        background-color: #ff3399;
+    }
+    100% {
+        background-color: #6666ff;
+    }
+  }
 .closebtn {
 	margin-left: 15px;
 	color: white;
@@ -147,6 +167,9 @@ body {
 	line-height: 20px;
 	cursor: pointer;
 	transition: 0.3s;
+}
+.retour{
+    float: right;
 }
 .closebtn:hover {
 	color: black;

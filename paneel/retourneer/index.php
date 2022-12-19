@@ -33,8 +33,12 @@ if (isset($_GET['barcode'])){
 			<?php if (isset($_GET['barcode'])){ if ($retour->num_rows == 0) {echo '<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display=`none`;">&times;</span>Kon geen artikel vinden!</div>';}else{ ?>
 			<img src="<?= $retourinforow['img'] ?>" alt="<?= $retourrow['naam'] ?>"><br>
 			<a class="naam"><?= $retourrow['naam'] ?></a>
-			<a class="info"><br>Datum uit geleend:<br><?= $retourrow['datumuit'] ?><br><br><br>Datum terug verwacht:<br><?= $retourrow['datumin'] ?></a>
+			<form type="post">
 			<textarea class="opmerking" placeholder="opmerking" required="required"></textarea>
+			<button class="retour" type="submit"> retour nemen</button>
+			<form>
+			<a class="info"><br>Datum uit geleend:<br><?= $retourrow['datumuit'] ?><br><br><br>Datum terug verwacht:<br><?= $retourrow['datumin'] ?></a>
+			
 			<div class="omhulsol">
 			<?php require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php'; $generator = new Picqer\Barcode\BarcodeGeneratorHTML(); ?>
 			<a class="barcode"><?php echo $generator->getBarcode($retourrow['barcode'], $generator::TYPE_CODE_128); ?></a>
