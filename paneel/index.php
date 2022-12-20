@@ -19,7 +19,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 </head>
 
 <body>
-	<p class="grote">uitloggen
+	<p class="grote">uitloggen</p>
 		<hr>
 		<center>
 			<div class="grote">
@@ -36,7 +36,17 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 						</tr>
 					</thead>
 				</table>
-				<div>
+			</div>
+			<tbody>
+				<tr>
+					<td><?php echo $row['z'] ?></td>
+					<td><?php echo $row['z'] ?></td>
+					<td><?php echo $row['z'] ?></td>
+					<td><?php echo $row['z'] ?></td>
+					<td><?php echo $row['z'] ?></td>
+				    <td><?php echo $row['z'] ?></td>
+				</tr>
+			</tbody>
 		</center> <br><br><br><br>
 		<hr>
 		<center>
@@ -54,7 +64,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 						</tr>
 					</thead>
 				</table>
-				<div>
+			</div>
 		</center> <br><br><br><br>
 		<hr>
 		<center>
@@ -72,7 +82,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 						</tr>
 					</thead>
 				</table>
-				<div>
+			</div>
 		</center> <br><br><br><br>
 		<hr>
 		<center>
