@@ -32,9 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		<link rel="stylesheet" href="css/index.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		<script src="js/zoek.js" defer></script>
+		<script src="js/main.js" defer></script>
 	</head>
-	<body>
+	<body id="eateregg">
 		<div>
+			<?php if (isset($_SESSION['loggedin']) == true){ ?>
+			<button class="eastereggbutton" id="eateregb" onclick="eateregg()"></button>
+			<?php } ?>
 			<form action="<?php $_SERVER["PHP_SELF"] ?>" method="GET">
 				<input type="text" name="zoek" id="zoekinput" placeholder="Zoeken...">
 			</form>
@@ -47,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<div class="alleartikelen">
 			<?php if (!isset($_GET['categorie'])){ ?>
 				<?php while ($row = $categorieen->fetch_assoc()) { ?>
-				<div class="artikel" onclick="categorie('<?= $row['naam'] ?>')">
+				<div class="artikel" onclick="categorie('<?= $row['id'] ?>')">
 					<img src="<?= $row['img'] ?>" alt="<?= $row['naam'] ?>"><br>
 					<a><?= $row['naam'] ?></a>
 				</div>
@@ -57,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					while ($row = $artikelen->fetch_assoc()) {
 					$uitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$row['barcode']."' AND datumuit <= CURRENT_DATE()");
 					?>
-					<div class="artikel" onclick="locatie('<?= $row['cate'] ?>', <?= $row['barcode'] ?>)">
+					<div class="artikel" onclick="locatie('<?= $row['id'] ?>', <?= $row['barcode'] ?>)">
 						<img src="<?= $row['img'] ?>" alt="<?= $row['naam'] ?>"><br>
 						<a><?= $row['naam'] ?></a>
 						<?php if (!$uitgeleend->num_rows == 0) {?>
@@ -78,9 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<?php				
 				$duitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$artikelrow['barcode']."' AND datumuit <= CURRENT_DATE()");
 				if (!$duitgeleend->num_rows == 0) {
-					$duitgeleendrow = $duitgeleend->fetch_assoc() ?>
+					$duitgeleendrow = $duitgeleend->fetch_assoc(); ?>
 					<div class="duitgeleend"><a>Uitgeleend</a></div>
-					<div class="duitgeleenda"><a><?= $duitgeleendrow['datumin'] ?></a></div>
+					<div class="duitgeleenda"><a><?= date("d-m-Y", strtotime($duitgeleendrow['datumin'])) ?></a></div>
 				<?php }?>
 				<img src="<?= $artikelrow['img'] ?>" alt="<?= $artikelrow['naam'] ?>"><br>
 				<a class="naam"><?= $artikelrow['naam'] ?></a>
