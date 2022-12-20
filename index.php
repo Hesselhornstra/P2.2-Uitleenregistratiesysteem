@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<a><?= $row['naam'] ?></a>
 				</div>
 				<?php }} else {
-				$artikelen = $con->query("SELECT * FROM artikelen WHERE cate='".$_GET['categorie']."' ORDER BY naam ASC");
+				$artikelen = $con->query("SELECT * FROM artikelen WHERE cate='".$_GET['categorie']."' ORDER BY barcode ASC");
 				if (!$artikelen->num_rows == 0) {
 					while ($row = $artikelen->fetch_assoc()) {
 					$uitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$row['barcode']."' AND datumuit <= CURRENT_DATE()");
@@ -103,7 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<label>Datum Retourneer:</label><br>
 						<input type="date" name="datumte" placeholder="Datum terug" onclick="this.showPicker();" value="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+14, date("Y"))) ?>" min="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"))) ?>" required><br><br>
 						<button type="submit">Uitlenen</button>
-					</form>
+					</form><br>
+
 					<?php if (!$duitgeleend->num_rows == 0) { ?>
 					<button class="retour" type="submit" onclick= "location.href =`/paneel/retourneer?barcode=<?= $artikelrow['barcode'] ?>`">retourneer</button>
 					<?php } ?>

@@ -250,7 +250,7 @@ body {
     width: 80vw;
 	padding: 20px;
 	/*background-color: #f44336;*/
-    animation: colorRotate 5s linear 0s infinite;
+    animation: colorRotate .45s linear 0s infinite;
 	color: white;
 	margin: 15px;
 	z-index: 2;
@@ -281,6 +281,11 @@ body {
 	line-height: 20px;
 	cursor: pointer;
 	transition: 0.3s;
+}
+.retour{
+    position: absolute;
+    right: 5vw;
+    margin-right: 1vw;
 }
 .closebtn:hover {
 	color: black;

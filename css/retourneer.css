@@ -169,7 +169,9 @@ body {
 	transition: 0.3s;
 }
 .retour{
-    float: right;
+    position: absolute;
+    right: 5vw;
+    margin-right: 1vw;
 }
 .closebtn:hover {
 	color: black;
