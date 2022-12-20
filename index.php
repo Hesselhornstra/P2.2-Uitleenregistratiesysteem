@@ -68,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			</div>
 			<?php if (isset($_GET['zoek'])){
 				$artikel = $con->query("SELECT * FROM artikelen WHERE barcode='".$_GET['zoek']."'");
+			if ($artikel->num_rows == 0) {echo '<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display=`none`;">&times;</span>Kon geen artikel vinden!</div>';}else{
 				$artikelrow = $artikel->fetch_assoc()
 			?>
 			<div class="dartikel">
@@ -103,6 +104,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<input type="date" name="datumte" placeholder="Datum terug" onclick="this.showPicker();" value="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+14, date("Y"))) ?>" min="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"))) ?>" required><br><br>
 						<button type="submit">Uitlenen</button>
 					</form>
+					<?php if (!$duitgeleend->num_rows == 0) { ?>
+					<button class="retour" type="submit" onclick= "location.href =`/paneel/retourneer?barcode=<?= $artikelrow['barcode'] ?>`">retourneer</button>
+					<?php } ?>
 					<?php $artikelges = $con->query("SELECT * FROM artikelges WHERE barcode='".$_GET['zoek']."'"); ?>
 					<div class="geschiedenis">
 						<?php if (!$artikelges->num_rows == 0) { ?>
@@ -136,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<?php } ?>
 				</div>
 			</div>
-			<?php } ?>
+			<?php }} ?>
 		</div>
 	</body>
 </html>

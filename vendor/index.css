@@ -1,0 +1,41 @@
+body { 
+	margin: 0; 
+	padding: 0; 
+    background-color: #23272a;
+    color: #fff;
+}
+table tr td a{
+    color: #fff;
+    text-decoration: none;
+}
+.uitlog {
+    position: relative;
+    top: 0.3vw;
+    left: 0.3vw;
+    width: 8vw;
+    height: 4vh;
+    background-color: #176292;
+    color: #fff;
+    border: gray solid 0.1vw;
+    border-radius: 0.3vw;
+    margin-bottom: 4vw;
+}
+.uitlog:hover {
+    cursor: pointer;
+    background-color: #0D334C;
+    border-color: #fff;
+}
+/* scroll balk */
+/* scroll balk */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
