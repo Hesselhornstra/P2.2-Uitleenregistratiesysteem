@@ -1,5 +1,8 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'].'/config.php';
+if (isset($_SESSION['loggedin']) == true) {
+	Header("Location: /paneel");
+}
 if ($_SERVER['REQUEST_METHOD'] == "POST" AND $_POST['form'] == "login") {
 	if (trim($_POST['username']) == NULL) {
 		echo '<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display=`none`;">&times;</span>Error geen gebruikers naam ingevult!</div>';

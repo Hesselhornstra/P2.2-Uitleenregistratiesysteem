@@ -25,6 +25,23 @@ table tr td a{
     background-color: #0D334C;
     border-color: #fff;
 }
+.knop {
+    position: relative;
+    width: 8vw;
+    height: 4vh;
+    background-color: #176292;
+    color: #fff;
+    border: gray solid 0.1vw;
+    border-radius: 0.3vw;
+}
+.knop:hover {
+    cursor: pointer;
+    background-color: #0D334C;
+    border-color: #fff;
+}
+#vandag, #moment, #wij, #ver, #aaan, #aver{
+    display: none;
+}
 /* scroll balk */
 /* scroll balk */
 ::-webkit-scrollbar {

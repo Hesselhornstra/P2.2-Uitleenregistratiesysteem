@@ -6,6 +6,39 @@ if ($_SESSION['loggedin'] != true) {
 $tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()");
 $today = $con->query("SELECT * FROM artikeluit WHERE datumin = CURRENT_DATE()");
 $stilaway = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()");
+
+$accounts = $con->query("SELECT * FROM users");
+$categorie = $con->query("SELECT * FROM categorieen");
+$categorie2 = $con->query("SELECT * FROM categorieen");
+$test = "Laptops";
+$artikelcat = $con->query("SELECT * FROM artikelen where cate='".$test."'");
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+	if ($_POST['form'] == "artiktoe") {
+		$con->query("INSERT INTO artikelen (naam, info, img, barcode, cate) VALUES ('".$_POST['naam']."', '".$_POST['info']."', '".$_POST['foto']."', '".$_POST['barcode']."', '".$_POST['select']."')");
+		Header("Refresh:0");
+	}
+	if ($_POST['form'] == "artikaan") {
+		
+		Header("Refresh:0");
+	}
+    if ($_POST['form'] == "artikver") {
+		$con->query("DELETE FROM artikelen WHERE id='".$_POST['select']."'");
+		Header("Refresh:0");
+	}
+	if ($_POST['form'] == "atoevoegen") {
+		$con->query("INSERT INTO users (name, password) VALUES ('".$_POST['nname']."', '".password_hash($_POST['npass'],PASSWORD_DEFAULT)."')");
+		Header("Refresh:0");
+	}
+	if ($_POST['form'] == "aaanpassen") {
+		$con->query("UPDATE users SET name = '".$_POST['nname']."', password = '".password_hash($_POST['npass'],PASSWORD_DEFAULT)."' WHERE id='".$_POST['select']."'");
+		Header("Refresh:0");
+	}
+    if ($_POST['form'] == "averwijder") {
+		$con->query("DELETE FROM users WHERE id='".$_POST['select']."'");
+		Header("Refresh:0");
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -16,17 +49,21 @@ $stilaway = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()
 	    <link rel="icon" type="image/x-icon" href="/img/logo.png">
 		<title>Paneel - Uitleenregistratiesysteem</title>
 		<link rel="stylesheet" href="index.css">
-		<script src="js/main.js" defer></script>
+		<script src="index.js" defer></script>
 	</head>
 	<body>
 		<button class="uitlog" onclick="location.href = `/uitlog`">Uitloggen</button>
 		<button class="uitlog" onclick="location.href = `/`">Artikelen</button>
 		<hr>
 		<center>
-			<div class="grote">
+			<h2>Artikelen</h2>
+			<button class="knop" onclick="artikelen('telaat')">Te Laat</button>
+			<button class="knop" onclick="artikelen('vandag')">Vandaag inleveren</button>
+			<button class="knop" onclick="artikelen('moment')">Momenteel uitgeleend</button>
+			<div class="grote" id="telaat">
 				<?php if (!$tolate->num_rows == 0) {?>
 				<table border='1'>
-					<caption>Te laat</caption><br>
+					<h3>Te laat</h3>
 					<thead>
 						<tr>
 							<th>Naam</th>
@@ -57,14 +94,12 @@ $stilaway = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()
 				<?php }else{ ?>
 					<h3>Er zijn geen te laat ingeleverde artikelen</h3>
 				<?php } ?>
+				<br><br><br>
 			</div>
-		</center><br><br><br><br>
-		<hr>
-		<center>
-			<div class="grote">
+			<div class="grote" id="vandag">
 				<?php if (!$today->num_rows == 0) {?>
 				<table border='1'>
-					<caption>Vandaag Inleveren</caption><br>
+					<h3>Vandaag Inleveren</h3>
 					<thead>
 						<tr>
 							<th>Naam</th>
@@ -95,14 +130,12 @@ $stilaway = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()
 				<?php }else{ ?>
 					<h3>Er zijn geen vandaag in te leverde artikelen</h3>
 				<?php } ?>
+				<br><br><br>
 			</div>
-		</center><br><br><br><br>
-		<hr>
-		<center>
-			<div class="grote">
+			<div class="grote" id="moment">
 				<?php if (!$stilaway->num_rows == 0) {?>
 				<table border='1'>
-					<caption>Uitgeleende artikelen</caption><br>
+					<h3>Uitgeleende artikelen</h3>
 					<thead>
 						<tr>
 							<th>Naam</th>
@@ -133,110 +166,117 @@ $stilaway = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()
 				<?php }else{ ?>
 					<h3>Er zijn geen vandaag in te leverde artikelen</h3>
 				<?php } ?>
+				<br><br><br>
 			</div>
-		</center><br><br><br><br>
-		<hr>
-		<center>
-			<form action="post">
-				<div class="bord">
-					<br>
-					<div>
-						<a class="boxol">Groep</a>
-						<a class="box">naam artikel</a>
-						<a class="box">Info artikel</a>
-						<a class="box">Foto artikel</a>
-						<br>><button class="boxton">Toevoegen</button>
-					</div>
-					<br>
-					<table class="tabl" border='1'>
-						<tr>
-							<th>Selecteer</th>
-						</tr>
-						<tr>
-							<th>Laptops</th>
-						</tr>
-						<tr>
-							<th>Tablets</th>
-						</tr>
-						<tr>
-							<th>monitoren</th>
-						</tr>
-						<tr>
-							<th>Camera's</th>
-						</tr>
-						<input class="txt" type="text">
-						<input class="txt" type="text">
-						<input class="txt" type="text">
-					</table>
-				</div>
-		</center>
-		<br>
-		<center>
-			<div class="bord">
-				<br>
-				<div>
-					<a class="boxol">Groep</a>
-					<a class="box">naam artikel</a>
-					<a class="box">Info artikel</a>
-					<a class="box">Foto artikel</a>
-					<br><button class="boxton">Wijzigen</button>
-				</div>
-				<br>
-				<table class="tabl" border='1'>
-					<tr>
-						<th>Selecteer</th>
-					</tr>
-					<tr>
-						<th>Laptops</th>
-					</tr>
-					<tr>
-						<th>Tablets</th>
-					</tr>
-					<tr>
-						<th>monitoren</th>
-					</tr>
-					<tr>
-						<th>Camera's</th>
-					</tr>
-					<input class="txt" type="text">
-					<input class="txt" type="Text">
-					<input class="txt" type="text">
-				</table>
+			<br><hr>
+			<h2>Artikel</h2>
+			<button class="knop" onclick="artikel('toe')">Toevoegen</button>
+			<button class="knop" onclick="artikel('wij')">Wijzigen</button>
+			<button class="knop" onclick="artikel('ver')">Verwijderen</button>
+			<div class="bord" id="toe">
+				<form method="POST">
+					<h3>Toevoegen</h3>
+					<input type="hidden" name="form" value="artiktoe">
+					<select name="select">
+                        <option value="">Selecteer een optie</option>
+						<?php while ($row = $categorie->fetch_assoc()) { ?>
+						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
+						<?php } ?>
+					</select>
+					<input type="text" name="naam" placeholder="Naam" required>
+					<input type="text" name="foto" placeholder="Foto" required>
+					<input type="text" name="info" placeholder="Info" required>
+					<input type="text" name="barcode" placeholder="Barcode" required>
+					<button>Toevoegen</button>
+				</form>
 			</div>
-		</center>
-		<br>
-		<center>
-			<div class="bord">
-				<br>
-				<div>
-					<a class="boxol">Groep</a>
-					<a class="box">naam artikel</a>
-					<a class="box">Info artikel</a>
-					<a class="box">Foto artikel</a>
-					<br><button class="boxton">Verwijderen</button>
-				</div>
-				<br>
-				<table class="tabl" border='1'>
-					<tr>
-						<th>Selecteer</th>
-					</tr>
-					<tr>
-						<th>Laptops</th>
-					</tr>
-					<tr>
-						<th>Tablets</th>
-					</tr>
-					<tr>
-						<th>monitoren</th>
-					</tr>
-					<tr>
-						<th>Camera's</th>
-					</tr>
-					<input class="txt" type="text">
-					<input class="txt" type="Text">
-					<input class="txt" type="text">
-				</table>
+			<br>
+			<div class="bord" id="wij">
+				<form method="POST">
+					<h3>Verwijderen</h3>
+					<input type="hidden" name="form" value="artikaan">
+					<select name="cato" required>
+                        <option value="">Selecteer een optie</option>
+						<?php while ($row = $categorie2->fetch_assoc()) { ?>
+						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
+						<?php } ?>
+					</select>
+					<select name="artikel" required>
+                        <option value="">Selecteer een optie</option>
+						<?php while ($row = $artikelcat->fetch_assoc()) { ?>
+						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
+						<?php } ?>
+					</select>
+					<input type="text" name="naam" placeholder="Naam" required>
+					<input type="text" name="foto" placeholder="Foto" required>
+					<input type="text" name="info" placeholder="Info" required>
+					<input type="text" name="barcode" placeholder="Barcode" required>
+					<button>Verwijderen</button>
+				</form>
 			</div>
+			<br>
+			<div class="bord" id="ver">
+				<form method="POST">
+					<h3>Verwijderen</h3>
+					<input type="hidden" name="form" value="artikver">
+					<select name="cato" required>
+                        <option value="">Selecteer een optie</option>
+						<?php while ($row = $categorie2->fetch_assoc()) { ?>
+						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
+						<?php } ?>
+					</select>
+					<select name="artikel" required>
+                        <option value="">Selecteer een optie</option>
+						<?php while ($row = $artikelcat->fetch_assoc()) { ?>
+						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
+						<?php } ?>
+					</select>
+					<button>Verwijderen</button>
+				</form>
+			</div>
+			<br><hr>
+			<h2>Account</h2>
+			<button class="knop" onclick="account('atoe')">Toevoegen</button>
+			<button class="knop" onclick="account('aaan')">Aanpassen</button>
+			<button class="knop" onclick="account('aver')">Verwijderen</button>
+			<div id="atoe">
+				<form method="POST">
+					<h3>Toevoegen</h3>
+					<input type="hidden" name="form" value="atoevoegen">
+					<input type="text" name="nname" placeholder="Naam" required>
+					<input type="password" name="npass" placeholder="Wachtwoord" required>
+					<button>Toevoegen</button>
+				</form>
+			</div>
+			<div id="aaan">
+				<form method="POST">
+					<h3>Aanpassen</h3>
+					<input type="hidden" name="form" value="aaanpassen">
+					<select name="select">
+                        <option value="">Selecteer een optie</option>
+						<?php while ($row = $accounts->fetch_assoc()) { ?>
+						<option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+						<?php } ?>
+					</select>
+					<input type="text" name="nname" placeholder="Nieuwe naam" required>
+					<input type="password" name="npass" placeholder="Nieuwe wachtwoord" required>
+					<button>Aanpassen</button>
+				</form>
+			</div>
+			<div id="aver">
+				<form method="POST">
+					<h3>Verwijderen</h3>
+					<input type="hidden" name="form" value="averwijder">
+					<select name="select" required>
+                        <option value="">Selecteer een optie</option>
+						<?php while ($row = $accounts->fetch_assoc()) { ?>
+						<option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+						<?php } ?>
+					</select>
+					<button>Verwijderen</button>
+				</form>
+			</div>
+			<br><br><br>
 		</center>
 	</body>
 </html>

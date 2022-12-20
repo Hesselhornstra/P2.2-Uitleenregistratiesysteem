@@ -241,6 +241,18 @@ body {
     border-color: #fff;
 }
 /* alerts */
+.eastereggbutton{
+    position: fixed;
+    top: 2px;
+    right: 2px;
+    width: 30px;
+    height: 30px;
+    background-color: #23272a;
+    border: #23272a none 1px;
+}
+.easteregg{
+    animation: colorRotate 3s linear 0s infinite;
+}
 .alert {
 	position: absolute;
     top: 1vw;
@@ -250,7 +262,7 @@ body {
     width: 80vw;
 	padding: 20px;
 	/*background-color: #f44336;*/
-    animation: colorRotate 5s linear 0s infinite;
+    animation: colorRotate .45s linear 0s infinite;
 	color: white;
 	margin: 15px;
 	z-index: 2;
@@ -259,17 +271,29 @@ body {
     from {
         background-color: #6666ff;
     }
-    10% {
+    12.5% {
         background-color: #0099ff;
+    }
+    25% {
+        background-color: #ff7700;
+    }
+    37.5% {
+        background-color: #000000;
     }
     50% {
         background-color: #00ff00;
     }
-    75% {
+    62.5% {
         background-color: #ff3399;
     }
+    75% {
+        background-color: #ffea00;
+    }
+    87.5% {
+        background-color: #ffffff;
+    }
     100% {
-        background-color: #6666ff;
+        background-color: #ff0000;
     }
   }
 .closebtn {
@@ -281,6 +305,11 @@ body {
 	line-height: 20px;
 	cursor: pointer;
 	transition: 0.3s;
+}
+.retour{
+    position: absolute;
+    right: 5vw;
+    margin-right: 1vw;
 }
 .closebtn:hover {
 	color: black;
