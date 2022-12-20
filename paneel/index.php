@@ -3,7 +3,9 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 /*if ($_SESSION['loggedin'] != true) {
 	Header("Location: /");
 }*/
-$artikel = $con->query("SELECT * FROM artikelen");
+$artuit = $con->query("SELECT * FROM artikeluit");
+$artikid = $con->query("SELECT * FROM artikel WHERE id = 1");
+
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -32,24 +34,22 @@ $artikel = $con->query("SELECT * FROM artikelen");
 						<th>Datum</th>
 						<th>Artikel</th>
 						<th>Datum terug</th>
-						<th>specificaties</th>
 					</tr>
 				</thead>
 			</table>
 		</div>
 		<?php
-		while ($row = mysqli_fetch_assoc($artikel)) {
+		while ($row = $artuit->fetch_assoc()) {
 		?>
 			<tr>
 				<td><?php echo $row["naam"]; ?></td>
 				<td><?php echo $row["mail"]; ?></td>
-				<td><?php echo $row["datum"]; ?></td>
-				<td><?php echo $row["artikel"]; ?></td>
-				<td><?php echo $row["datum terug"]; ?></td>
-				<td><?php echo $row["specificaties"]; ?></td>
+				<td><?php echo $row["datumin"]; ?></td>
+				<td><?php echo $row["artikid"]; ?></td>
+				<td><?php echo $row["datumuit"]; ?></td>
 			</tr>
 		<?php
-		}
+		} 
 		?>
 		</table>
 	</center> <br><br><br><br>
