@@ -310,7 +310,7 @@ body {
     position: absolute;
     right: 5vw;
     margin-right:2vw;
-    margin-top: 4vw;
+    top: 20vw;
 }
 .closebtn:hover {
 	color: black;
@@ -329,6 +329,3 @@ body {
     background: #555;
 }
 /* scroll balk */
-.retour{
-    float: right;
-}

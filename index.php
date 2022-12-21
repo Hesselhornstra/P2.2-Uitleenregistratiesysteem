@@ -1,6 +1,11 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'].'/config.php';
 $categorieen = $con->query("SELECT * FROM categorieen WHERE not id='0'");
+if (isset($_GET['categorie'])){
+	if ($_GET['categorie']==99){
+		header("location: / ");
+	}
+}
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($_POST['form'] == "uitlenen") {
 		$con->query("INSERT INTO artikeluit (
@@ -51,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<button class="terug" onclick="terug()">Terug</button>
 				</div>
 			<?php }else{?><div class="catediv"><h1>Kies een categorie</h1></div><?php } ?>
-			<div class="alleartikelen">
+			<div class="alleartikelen" id="eastteregg">
 			<?php if (!isset($_GET['categorie'])){ ?>
 				<?php while ($row = $categorieen->fetch_assoc()) { ?>
 				<div class="artikel" onclick="categorie('<?= $row['id'] ?>')">
@@ -110,7 +115,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<label>Datum Retourneer:</label><br>
 						<input type="date" name="datumte" placeholder="Datum terug" onclick="this.showPicker();" value="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+14, date("Y"))) ?>" min="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"))) ?>" required><br><br>
 						<button type="submit">Uitlenen</button>
-					</form>
+					</form><br>
+
 					<?php if (!$duitgeleend->num_rows == 0) { ?>
 					<button class="retour" type="submit" onclick= "location.href =`/paneel/retourneer?barcode=<?= $artikelrow['barcode'] ?>`">retourneer</button>
 					<?php } ?>
