@@ -3,10 +3,12 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 /*if ($_SESSION['loggedin'] != true) {
 	Header("Location: /");
 }*/
-$artuit = $con->query("SELECT * FROM artikeluit");
-$artid = $artuit->fetch_assoc();
-$artikid = $con->query("SELECT * FROM artikelen WHERE id='" . $artid['id'] . "'");
 $tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()");
+$now = $con->query("SELECT * FROM artikeluit WHERE datumin = CURRENT_DATE()");
+$out = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()");
+$artnaam = $con->query("SELECT * FROM artikelen");
+$categorieen = $con->query("SELECT * FROM categorieen");
+
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -40,29 +42,23 @@ $tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()")
 
 		</div>
 		<?php
-		while ($row = $artuit->fetch_assoc()) {
+		while ($row = $tolate->fetch_assoc()) {
+			$producttolate = $con->query("SELECT * FROM artikelen WHERE barcode='" . $row['barcode'] . "'");
+			$producttolate = $producttolate->fetch_assoc()
 		?>
-			<?php
-			while ($row = $tolate->fetch_assoc()) {
-				$producttolate = $con->query("SELECT * FROM artikelen WHERE barcode='" . $row['barcode'] . "'");
-				$producttolate = $producttolate->fetch_assoc()
-			?>
-				<tbody>
-					<tr>
-						<td><?= $row['naam'] ?></td>
-						<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
-						<td><?= $row['datumuit'] ?></td>
-						<td><?= $producttolate['naam'] ?></td>
-						<td><?= $row['datumin'] ?></td>
-					</tr>
-				</tbody>
-			<?php
-			}
-			?>
-			</table>
+			<tbody>
+				<tr>
+					<td><?= $row['naam'] ?></td>
+					<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
+					<td><?= $row['datumuit'] ?></td>
+					<td><?= $producttolate['naam'] ?></td>
+					<td><?= $row['datumin'] ?></td>
+				</tr>
+			</tbody>
 		<?php
 		}
 		?>
+		</table>
 		</table>
 	</center> <br><br><br><br>
 	<hr>
@@ -79,18 +75,21 @@ $tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()")
 						<th>Datum terug</th>
 					</tr>
 				</thead>
-			</table>
 		</div>
 		<?php
-		while ($row = $artuit->fetch_assoc()) {
+		while ($row = $now->fetch_assoc()) {
+			$productnow = $con->query("SELECT * FROM artikelen WHERE barcode='" . $row['barcode'] . "'");
+			$productnow = $productnow->fetch_assoc()
 		?>
-			<tr>
-				<td><?php echo $row["	naam"]; ?></td>
-				<td><?php echo $row["mail"]; ?></td>
-				<td><?php echo $row["datumin"]; ?></td>
-				<td><?php echo $row["artikid"]; ?></td>
-				<td><?php echo $row["datumuit"]; ?></td>
-			</tr>
+			<tbody>
+				<tr>
+					<td><?= $row['naam'] ?></td>
+					<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
+					<td><?= $row['datumuit'] ?></td>
+					<td><?= $productnow['naam'] ?></td>
+					<td><?= $row['datumin'] ?></td>
+				</tr>
+			</tbody>
 		<?php
 		}
 		?>
@@ -110,18 +109,22 @@ $tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()")
 							<th>Datum terug</th>
 						</tr>
 					</thead>
-				</table>
 			</div>
 			<?php
-			while ($row = $artuit->fetch_assoc()) {
+			while ($row = $out->fetch_assoc()) {
+				$productout = $con->query("SELECT * FROM artikelen WHERE barcode='" . $row['barcode'] . "'");
+				$productout = $productout->fetch_assoc()
 			?>
-				<tr>
-					<td><?php echo $row["naam"]; ?></td>
-					<td><?php echo $row["mail"]; ?></td>
-					<td><?php echo $row["datumin"]; ?></td>
-					<td><?php echo $row["artikid"]; ?></td>
-					<td><?php echo $row["datumuit"]; ?></td>
-				</tr>
+				<tbody>
+					<tr>
+						<td><?= $row['naam'] ?></td>
+						<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
+						<td><?= $row['datumuit'] ?></td>
+						<td><?= $productout['naam'] ?></td>
+						<td><?= $row['datumin'] ?></td>
+
+					</tr>
+				</tbody>
 			<?php
 			}
 			?>
@@ -129,111 +132,101 @@ $tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()")
 		</center> <br><br><br><br>
 		<hr>
 		<center>
-			<form action="post">
+			<caption>Toevoegen</caption>
+			<table border=1>
+				<thead>
+					<tr>
+						<th>Groep</th>
+						<th>Naam artikel</th>
+						<th>Info artikel</th>
+						<th>Link foto</th>
+					</tr>
+				</thead>
+		</center>
+		<tbody>
+			<td><select name="select" value="" onChange="form.submit()">
+					<option value="">Selecteer een categorie</option>
+					<?php while ($row = $categorieen->fetch_assoc()) { ?>
+						<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
+					<?php } ?>
+				</select></td>
+			<td><input type="text" required></td>
+			<td><input type="text" required></td>
+			<td><input type="text" required></td>
+			<td><input type="submit" name="Verstuur" value="registreer"></td>
+		</tbody>
+		</form>
+		</table>
+		</div>
+		<br>
+		<center>
 
-				<div class="bord">
-					<br>
-					<div>
-						<a class="boxol">Groep</a>
-						<a class="box">naam artikel</a>
-						<a class="box">Info artikel</a>
-						<a class="box">Foto artikel</a>
-						<br>><button class="boxton">Toevoegen</button>
-					</div>
-					<br>
-					<table class="tabl" border='1'>
-						<tr>
-							<th>Selecteer</th>
-						</tr>
-						<tr>
-							<th>Laptops</th>
-						</tr>
-						<tr>
-							<th>Tablets</th>
-						</tr>
-						<tr>
-							<th>monitoren</th>
-						</tr>
-						<tr>
-							<th>Camera's</th>
-						</tr>
-						<input class="txt" type="text">
-						<input class="txt" type="text">
-						<input class="txt" type="text">
-					</table>
-				</div>
+			<caption>Aanpassen</caption>
+			<table border=1>
+				<thead>
+					<tr>
+						<th>categorie</th>
+						<th>Artikel</th>
+						<th>Naam artikel</th>
+						<th>Info artikel</th>
+						<th>Link foto</th>
+					</tr>
+				</thead>
 		</center>
+		<tbody>
+			<?php $categorieen = $con->query("SELECT * FROM categorieen"); ?>
+			<td><select name="select" value="" onChange="form.submit()">
+					<option value="">Selecteer een categorie</option>
+					<?php while ($row = $categorieen->fetch_assoc()) { ?>
+						<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
+					<?php } ?>
+				</select></td>
+			<td>
+				<select>
+					<option value="">Selecteer een artikel</option>
+					<?php while ($row = $artnaam->fetch_assoc()) { ?>
+						<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
+					<?php } ?>
+				</select>
+			</td>
+
+			<td><input type="text" required></td>
+			<td><input type="text" required></td>
+			<td><input type="text" required></td>
+			<td><input type="submit" name="Verstuur" value="registreer"></td>
+		</tbody>
+		</form>
+		</table>
+		</div>
 		<br>
 		<center>
-			<?php
-			$query = "UPDATE artikelen SET name=?, info=?, img=? WHERE id=?";
-			?>
-			<div class="bord">
-				<br>
-				<div>
-					<a class="boxol">Groep</a>
-					<a class="box">naam artikel</a>
-					<a class="box">Info artikel</a>
-					<a class="box">Foto artikel</a>
-					<br><button class="boxton">Wijzigen</button>
-				</div>
-				<br>
-				<table class="tabl" border='1'>
+			<caption>verwijderen</caption>
+			<table border=1>
+				<thead>
 					<tr>
-						<th>Selecteer</th>
+						<th>Artikel</th>
+						<th>Naam artikel</th>
+						<th>Info artikel</th>
+						<th>Link foto</th>
 					</tr>
-					<tr>
-						<th>Laptops</th>
-					</tr>
-					<tr>
-						<th>Tablets</th>
-					</tr>
-					<tr>
-						<th>monitoren</th>
-					</tr>
-					<tr>
-						<th>Camera's</th>
-					</tr>
-					<input class="txt" type="text">
-					<input class="txt" type="Text">
-					<input class="txt" type="text">
-				</table>
-			</div>
+				</thead>
 		</center>
-		<br>
-		<center>
-			<div class="bord">
-				<br>
-				<div>
-					<a class="boxol">Groep</a>
-					<a class="box">naam artikel</a>
-					<a class="box">Info artikel</a>
-					<a class="box">Foto artikel</a>
-					<br><button class="boxton">Verwijderen</button>
-				</div>
-				<br>
-				<table class="tabl" border='1'>
-					<tr>
-						<th>Selecteer</th>
-					</tr>
-					<tr>
-						<th>Laptops</th>
-					</tr>
-					<tr>
-						<th>Tablets</th>
-					</tr>
-					<tr>
-						<th>monitoren</th>
-					</tr>
-					<tr>
-						<th>Camera's</th>
-					</tr>
-					<input class="txt" type="text">
-					<input class="txt" type="Text">
-					<input class="txt" type="text">
-				</table>
-			</div>
-		</center>
+		<tbody>
+			<td><select name="select" value="" onChange="form.submit()">
+					<option value="">Selecteer een categorie</option>
+					<?php while ($row = $artnaam->fetch_assoc()) { ?>
+						<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
+					<?php } ?>
+				</select>
+			</td>
+			<td><input type="text" required></td>
+			<td><input type="text" required></td>
+			<td><input type="text" required></td>
+			<td><input type="submit" name="Verstuur" value="registreer"></td>
+		</tbody>
+		</form>
+		</table>
+		</div>
 </body>
 
 </html>

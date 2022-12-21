@@ -41,5 +41,8 @@
 		padding-top: 5%;
 		padding-bottom: 5%;
 		width: 20%;
-		margin-top: -15%;
+	}
+	.sect {
+		margin-left: -5%;
+		float: left;
 	}
