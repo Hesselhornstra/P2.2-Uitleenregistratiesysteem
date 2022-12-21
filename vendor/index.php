@@ -46,14 +46,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		<script src="index.js" defer></script>
 	</head>
 	<body>
-		<button class="uitlog" onclick="location.href = `/uitlog`">Uitloggen</button>
+		<button class="uitlog" onclick="location.href = `/loguit`">Uitloggen</button>
 		<button class="uitlog" onclick="location.href = `/`">Artikelen</button>
 		<hr>
 		<center>
 			<h2>Artikelen</h2>
 			<button class="knop" onclick="artikelen('telaat')">Te Laat</button>
 			<button class="knop" onclick="artikelen('vandag')">Vandaag inleveren</button>
-			<button class="knop" onclick="artikelen('moment')">Momenteel uitgeleend</button>
+			<button class="knop" onclick="artikelen('moment')">Uitgeleend/Geplanned</button>
 			<div class="grote" id="telaat">
 				<?php if (!$tolate->num_rows == 0) {?>
 				<table border='1'>
@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<div class="grote" id="moment">
 				<?php if (!$stilaway->num_rows == 0) {?>
 				<table border='1'>
-					<h3>Uitgeleende artikelen</h3>
+					<h3>Uitgeleend/Geplanned</h3>
 					<thead>
 						<tr>
 							<th>Naam</th>
@@ -172,8 +172,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<h3>Toevoegen</h3>
 					<input type="hidden" name="form" value="artiktoe">
 					<select name="select">
-                        <option value="">Selecteer een optie</option>
-						<?php $categorie = $con->query("SELECT * FROM categorieen");
+                        <option value="">Selecteer een categorie</option>
+						<?php $categorie = $con->query("SELECT * FROM categorieen WHERE not id='0'");
 						while ($row = $categorie->fetch_assoc()) { ?>
 						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
@@ -185,21 +185,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<button>Toevoegen</button>
 				</form>
 			</div>
-			<br>
 			<div class="bord" id="wij">
 				<form method="POST">
-					<h3>Verwijderen</h3>
+					<h3>Aanpassen</h3>
 					<input type="hidden" name="form" value="artikaan">
-					<select name="cato" required>
-                        <option value="">Selecteer een optie</option>
-						<?php $categorie = $con->query("SELECT * FROM categorieen");
-						while ($row = $categorie->fetch_assoc()) { ?>
-						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
-						<?php } ?>
-					</select>
 					<select name="artikel" required>
-                        <option value="">Selecteer een optie</option>
-						<?php $artikelcat = $con->query("SELECT * FROM artikelen where cate='"."Laptops"."'");//Wip
+                        <option value="">Selecteer een artikel</option>
+						<?php $artikelcat = $con->query("SELECT * FROM artikelen WHERE not cate='0'");//Wip
 						while ($row = $artikelcat->fetch_assoc()) { ?>
 						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
@@ -208,24 +200,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="text" name="foto" placeholder="Foto" required>
 					<input type="text" name="info" placeholder="Info" required>
 					<input type="text" name="barcode" placeholder="Barcode" required>
-					<button>Verwijderen</button>
+					<button>Aanpassen</button>
 				</form>
 			</div>
-			<br>
 			<div class="bord" id="ver">
 				<form method="POST">
 					<h3>Verwijderen</h3>
 					<input type="hidden" name="form" value="artikver">
-					<select name="cato" required>
-                        <option value="">Selecteer een optie</option>
-						<?php $categorie = $con->query("SELECT * FROM categorieen");
-						while ($row = $categorie->fetch_assoc()) { ?>
-						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
-						<?php } ?>
-					</select>
 					<select name="artikel" required>
-                        <option value="">Selecteer een optie</option>
-						<?php $artikelcat = $con->query("SELECT * FROM artikelen where cate='"."Laptops"."'");//Wip
+                        <option value="">Selecteer een artikel</option>
+						<?php $artikelcat = $con->query("SELECT * FROM artikelen WHERE not cate='0'");//Wip
 						while ($row = $artikelcat->fetch_assoc()) { ?>
 						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
@@ -252,7 +236,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<h3>Aanpassen</h3>
 					<input type="hidden" name="form" value="aaanpassen">
 					<select name="select">
-                        <option value="">Selecteer een optie</option>
+                        <option value="">Selecteer een gebruiker</option>
 						<?php $accounts = $con->query("SELECT * FROM users");
 						while ($row = $accounts->fetch_assoc()) { ?>
 						<option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
@@ -268,7 +252,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<h3>Verwijderen</h3>
 					<input type="hidden" name="form" value="averwijder">
 					<select name="select" required>
-                        <option value="">Selecteer een optie</option>
+                        <option value="">Selecteer een gebruiker</option>
 						<?php $accounts = $con->query("SELECT * FROM users");
 						while ($row = $accounts->fetch_assoc()) { ?>
 						<option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>

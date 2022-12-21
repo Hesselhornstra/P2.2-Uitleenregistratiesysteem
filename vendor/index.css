@@ -18,7 +18,7 @@ table tr td a{
     color: #fff;
     border: gray solid 0.1vw;
     border-radius: 0.3vw;
-    margin-bottom: 4vw;
+    margin-bottom: 1vw;
 }
 .uitlog:hover {
     cursor: pointer;
@@ -27,7 +27,7 @@ table tr td a{
 }
 .knop {
     position: relative;
-    width: 8vw;
+    width: 10vw;
     height: 4vh;
     background-color: #176292;
     color: #fff;
