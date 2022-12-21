@@ -309,7 +309,8 @@ body {
 .retour{
     position: absolute;
     right: 5vw;
-    margin-right: 1vw;
+    margin-right:2vw;
+    margin-top: 4vw;
 }
 .closebtn:hover {
 	color: black;

@@ -110,8 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<label>Datum Retourneer:</label><br>
 						<input type="date" name="datumte" placeholder="Datum terug" onclick="this.showPicker();" value="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+14, date("Y"))) ?>" min="<?= date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y"))) ?>" required><br><br>
 						<button type="submit">Uitlenen</button>
-					</form><br>
-
+					</form>
 					<?php if (!$duitgeleend->num_rows == 0) { ?>
 					<button class="retour" type="submit" onclick= "location.href =`/paneel/retourneer?barcode=<?= $artikelrow['barcode'] ?>`">retourneer</button>
 					<?php } ?>
