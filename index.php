@@ -1,6 +1,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'].'/config.php';
-$categorieen = $con->query("SELECT * FROM categorieen");
+$categorieen = $con->query("SELECT * FROM categorieen WHERE not id='0'");
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($_POST['form'] == "uitlenen") {
 		$con->query("INSERT INTO artikeluit (
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					while ($row = $artikelen->fetch_assoc()) {
 					$uitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$row['barcode']."' AND datumuit <= CURRENT_DATE()");
 					?>
-					<div class="artikel" onclick="locatie('<?= $row['id'] ?>', <?= $row['barcode'] ?>)">
+					<div class="artikel" onclick="locatie('<?= $_GET['categorie'] ?>', <?= $row['barcode'] ?>)">
 						<img src="<?= $row['img'] ?>" alt="<?= $row['naam'] ?>"><br>
 						<a><?= $row['naam'] ?></a>
 						<?php if (!$uitgeleend->num_rows == 0) {?>
