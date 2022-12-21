@@ -4,8 +4,9 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 	Header("Location: /");
 }*/
 $artuit = $con->query("SELECT * FROM artikeluit");
-$artikid = $con->query("SELECT * FROM artikelen WHERE id = 1");
-
+$artid = $artuit->fetch_assoc();
+$artikid = $con->query("SELECT * FROM artikelen WHERE id='" . $artid['id'] . "'");
+$tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()");
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -36,98 +37,135 @@ $artikid = $con->query("SELECT * FROM artikelen WHERE id = 1");
 						<th>Datum terug</th>
 					</tr>
 				</thead>
+
+		</div>
+		<?php
+		while ($row = $artuit->fetch_assoc()) {
+		?>
+			<?php
+			while ($row = $tolate->fetch_assoc()) {
+				$producttolate = $con->query("SELECT * FROM artikelen WHERE barcode='" . $row['barcode'] . "'");
+				$producttolate = $producttolate->fetch_assoc()
+			?>
+				<tbody>
+					<tr>
+						<td><?= $row['naam'] ?></td>
+						<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
+						<td><?= $row['datumuit'] ?></td>
+						<td><?= $producttolate['naam'] ?></td>
+						<td><?= $row['datumin'] ?></td>
+					</tr>
+				</tbody>
+			<?php
+			}
+			?>
+			</table>
+		<?php
+		}
+		?>
+		</table>
+	</center> <br><br><br><br>
+	<hr>
+	<<center>
+		<div class="grote">
+			<table border='1'>
+				<caption>Vandaag inleveren</caption> </BR>
+				<thead>
+					<tr>
+						<th>Naam</th>
+						<th>Mail</th>
+						<th>Datum</th>
+						<th>Artikel</th>
+						<th>Datum terug</th>
+					</tr>
+				</thead>
 			</table>
 		</div>
 		<?php
 		while ($row = $artuit->fetch_assoc()) {
 		?>
 			<tr>
-				<td><?php echo $row["naam"]; ?></td>
+				<td><?php echo $row["	naam"]; ?></td>
 				<td><?php echo $row["mail"]; ?></td>
 				<td><?php echo $row["datumin"]; ?></td>
 				<td><?php echo $row["artikid"]; ?></td>
 				<td><?php echo $row["datumuit"]; ?></td>
 			</tr>
 		<?php
-		} 
+		}
 		?>
 		</table>
-	</center> <br><br><br><br>
-	<hr>
-	<center>
-		<div class="grote">
-			<table border='1'>
-				<caption>Vandaag Inleveren</caption> </BR>
-				<thead>
-					<tr>
-						<th>Naam</th>
-						<th>Mail</th>
-						<th>Datum</th>
-						<th>Artikel</th>
-						<th>Datum terug</th>
-						<th>specificaties</th>
-					</tr>
-				</thead>
-			</table>
-		</div>
-	</center> <br><br><br><br>
-	<hr>
-	<center>
-		<div class="grote">
-			<table border='1'>
-				<caption>Momenteel Uitgeleend</caption> </BR>
-				<thead>
-					<tr>
-						<th>Naam</th>
-						<th>Mail</th>
-						<th>Datum</th>
-						<th>Artikel</th>
-						<th>Datum terug</th>
-						<th>specificaties</th>
-					</tr>
-				</thead>
-			</table>
-		</div>
-	</center> <br><br><br><br>
-	<hr>
-	<center>
-		<form action="post">
-			 
-			<div class="bord">
-				<br>
-				<div>
-					<a class="boxol">Groep</a>
-					<a class="box">naam artikel</a>
-					<a class="box">Info artikel</a>
-					<a class="box">Foto artikel</a>
-					<br>><button class="boxton">Toevoegen</button>
-				</div>
-				<br>
-				<table class="tabl" border='1'>
-					<tr>
-						<th>Selecteer</th>
-					</tr>
-					<tr>
-						<th>Laptops</th>
-					</tr>
-					<tr>
-						<th>Tablets</th>
-					</tr>
-					<tr>
-						<th>monitoren</th>
-					</tr>
-					<tr>
-						<th>Camera's</th>
-					</tr>
-					<input class="txt" type="text">
-					<input class="txt" type="text">
-					<input class="txt" type="text">
+		</center> <br><br><br><br>
+		<hr>
+		<center>
+			<div class="grote">
+				<table border='1'>
+					<caption>Momenteel uitgeleend</caption> </BR>
+					<thead>
+						<tr>
+							<th>Naam</th>
+							<th>Mail</th>
+							<th>Datum</th>
+							<th>Artikel</th>
+							<th>Datum terug</th>
+						</tr>
+					</thead>
 				</table>
 			</div>
-	</center>
-	<br>
-	<center>
-		<?php
+			<?php
+			while ($row = $artuit->fetch_assoc()) {
+			?>
+				<tr>
+					<td><?php echo $row["naam"]; ?></td>
+					<td><?php echo $row["mail"]; ?></td>
+					<td><?php echo $row["datumin"]; ?></td>
+					<td><?php echo $row["artikid"]; ?></td>
+					<td><?php echo $row["datumuit"]; ?></td>
+				</tr>
+			<?php
+			}
+			?>
+			</table>
+		</center> <br><br><br><br>
+		<hr>
+		<center>
+			<form action="post">
+
+				<div class="bord">
+					<br>
+					<div>
+						<a class="boxol">Groep</a>
+						<a class="box">naam artikel</a>
+						<a class="box">Info artikel</a>
+						<a class="box">Foto artikel</a>
+						<br>><button class="boxton">Toevoegen</button>
+					</div>
+					<br>
+					<table class="tabl" border='1'>
+						<tr>
+							<th>Selecteer</th>
+						</tr>
+						<tr>
+							<th>Laptops</th>
+						</tr>
+						<tr>
+							<th>Tablets</th>
+						</tr>
+						<tr>
+							<th>monitoren</th>
+						</tr>
+						<tr>
+							<th>Camera's</th>
+						</tr>
+						<input class="txt" type="text">
+						<input class="txt" type="text">
+						<input class="txt" type="text">
+					</table>
+				</div>
+		</center>
+		<br>
+		<center>
+			<?php
 			$query = "UPDATE artikelen SET name=?, info=?, img=? WHERE id=?";
 			?>
 			<div class="bord">
@@ -161,41 +199,41 @@ $artikid = $con->query("SELECT * FROM artikelen WHERE id = 1");
 					<input class="txt" type="text">
 				</table>
 			</div>
-	</center>
-	<br>
-	<center>
-		<div class="bord">
-			<br>
-			<div>
-				<a class="boxol">Groep</a>
-				<a class="box">naam artikel</a>
-				<a class="box">Info artikel</a>
-				<a class="box">Foto artikel</a>
-				<br><button class="boxton">Verwijderen</button>
+		</center>
+		<br>
+		<center>
+			<div class="bord">
+				<br>
+				<div>
+					<a class="boxol">Groep</a>
+					<a class="box">naam artikel</a>
+					<a class="box">Info artikel</a>
+					<a class="box">Foto artikel</a>
+					<br><button class="boxton">Verwijderen</button>
+				</div>
+				<br>
+				<table class="tabl" border='1'>
+					<tr>
+						<th>Selecteer</th>
+					</tr>
+					<tr>
+						<th>Laptops</th>
+					</tr>
+					<tr>
+						<th>Tablets</th>
+					</tr>
+					<tr>
+						<th>monitoren</th>
+					</tr>
+					<tr>
+						<th>Camera's</th>
+					</tr>
+					<input class="txt" type="text">
+					<input class="txt" type="Text">
+					<input class="txt" type="text">
+				</table>
 			</div>
-			<br>
-			<table class="tabl" border='1'>
-				<tr>
-					<th>Selecteer</th>
-				</tr>
-				<tr>
-					<th>Laptops</th>
-				</tr>
-				<tr>
-					<th>Tablets</th>
-				</tr>
-				<tr>
-					<th>monitoren</th>
-				</tr>
-				<tr>
-					<th>Camera's</th>
-				</tr>
-				<input class="txt" type="text">
-				<input class="txt" type="Text">
-				<input class="txt" type="text">
-			</table>
-		</div>
-	</center>
+		</center>
 </body>
 
 </html>
