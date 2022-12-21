@@ -4,7 +4,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 	Header("Location: /");
 }*/
 $artuit = $con->query("SELECT * FROM artikeluit");
-$artikid = $con->query("SELECT * FROM artikel WHERE id = 1");
+$artikid = $con->query("SELECT * FROM artikelen WHERE id = 1");
 
 ?>
 <!DOCTYPE html>
