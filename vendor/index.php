@@ -7,24 +7,18 @@ $tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()")
 $today = $con->query("SELECT * FROM artikeluit WHERE datumin = CURRENT_DATE()");
 $stilaway = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()");
 
-$accounts = $con->query("SELECT * FROM users");
-$categorie = $con->query("SELECT * FROM categorieen");
-$categorie2 = $con->query("SELECT * FROM categorieen");
-$test = "Laptops";
-$artikelcat = $con->query("SELECT * FROM artikelen where cate='".$test."'");
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	if ($_POST['form'] == "artiktoe") {
 		$con->query("INSERT INTO artikelen (naam, info, img, barcode, cate) VALUES ('".$_POST['naam']."', '".$_POST['info']."', '".$_POST['foto']."', '".$_POST['barcode']."', '".$_POST['select']."')");
-		Header("Refresh:0");
+		Header("Refresh:0");//Wip
 	}
 	if ($_POST['form'] == "artikaan") {
-		
+		//Wip
 		Header("Refresh:0");
 	}
     if ($_POST['form'] == "artikver") {
 		$con->query("DELETE FROM artikelen WHERE id='".$_POST['select']."'");
-		Header("Refresh:0");
+		Header("Refresh:0");//Wip
 	}
 	if ($_POST['form'] == "atoevoegen") {
 		$con->query("INSERT INTO users (name, password) VALUES ('".$_POST['nname']."', '".password_hash($_POST['npass'],PASSWORD_DEFAULT)."')");
@@ -179,7 +173,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="hidden" name="form" value="artiktoe">
 					<select name="select">
                         <option value="">Selecteer een optie</option>
-						<?php while ($row = $categorie->fetch_assoc()) { ?>
+						<?php $categorie = $con->query("SELECT * FROM categorieen");
+						while ($row = $categorie->fetch_assoc()) { ?>
 						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
 					</select>
@@ -197,13 +192,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="hidden" name="form" value="artikaan">
 					<select name="cato" required>
                         <option value="">Selecteer een optie</option>
-						<?php while ($row = $categorie2->fetch_assoc()) { ?>
+						<?php $categorie = $con->query("SELECT * FROM categorieen");
+						while ($row = $categorie->fetch_assoc()) { ?>
 						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
 					</select>
 					<select name="artikel" required>
                         <option value="">Selecteer een optie</option>
-						<?php while ($row = $artikelcat->fetch_assoc()) { ?>
+						<?php $artikelcat = $con->query("SELECT * FROM artikelen where cate='"."Laptops"."'");//Wip
+						while ($row = $artikelcat->fetch_assoc()) { ?>
 						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
 					</select>
@@ -221,13 +218,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="hidden" name="form" value="artikver">
 					<select name="cato" required>
                         <option value="">Selecteer een optie</option>
-						<?php while ($row = $categorie2->fetch_assoc()) { ?>
+						<?php $categorie = $con->query("SELECT * FROM categorieen");
+						while ($row = $categorie->fetch_assoc()) { ?>
 						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
 					</select>
 					<select name="artikel" required>
                         <option value="">Selecteer een optie</option>
-						<?php while ($row = $artikelcat->fetch_assoc()) { ?>
+						<?php $artikelcat = $con->query("SELECT * FROM artikelen where cate='"."Laptops"."'");//Wip
+						while ($row = $artikelcat->fetch_assoc()) { ?>
 						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
 					</select>
@@ -254,7 +253,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="hidden" name="form" value="aaanpassen">
 					<select name="select">
                         <option value="">Selecteer een optie</option>
-						<?php while ($row = $accounts->fetch_assoc()) { ?>
+						<?php $accounts = $con->query("SELECT * FROM users");
+						while ($row = $accounts->fetch_assoc()) { ?>
 						<option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
 						<?php } ?>
 					</select>
@@ -269,7 +269,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="hidden" name="form" value="averwijder">
 					<select name="select" required>
                         <option value="">Selecteer een optie</option>
-						<?php while ($row = $accounts->fetch_assoc()) { ?>
+						<?php $accounts = $con->query("SELECT * FROM users");
+						while ($row = $accounts->fetch_assoc()) { ?>
 						<option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
 						<?php } ?>
 					</select>
