@@ -42,9 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<form action="<?php $_SERVER["PHP_SELF"] ?>" method="GET">
 				<input type="text" name="zoek" id="zoekinput" placeholder="Zoeken...">
 			</form>
-			<?php if (isset($_GET['categorie'])){ ?>
+			<?php if (isset($_GET['categorie'])){
+				$categorietitle = $con->query("SELECT * FROM categorieen where id='".$_GET['categorie']."'");
+				$categorietitlerow = $categorietitle->fetch_assoc()
+				?>
 				<div class="catediv">
-					<h1><?= $_GET['categorie'] ?></h1>
+					<h1><?= $categorietitlerow['naam'] ?></h1>
 					<button class="terug" onclick="terug()">Terug</button>
 				</div>
 			<?php }else{?><div class="catediv"><h1>Kies een categorie</h1></div><?php } ?>
