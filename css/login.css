@@ -73,7 +73,8 @@ body {
     height: 1vw;
     width: 80vw;
 	padding: 20px;
-	animation: colorRotate .45s linear 0s infinite;
+    background-color: #f44336;
+	/*animation: colorRotate .45s linear 0s infinite;*/
 	color: white;
 	margin: 15px;
 	z-index: 2;
