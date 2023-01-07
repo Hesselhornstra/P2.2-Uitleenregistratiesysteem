@@ -137,47 +137,50 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 		</center> <br><br><br><br>
 		<hr>
 		<center>
-			<caption>Toevoegen</caption>
-			<table border=1>
-				<thead>
-					<tr>
-						<th>Groep</th>
-						<th>Naam artikel</th>
-						<th>Info artikel</th>
-						<th>Link foto</th>
-					</tr>
-				</thead>
-		</center>
-		<tbody>
-			<td><select name="select" value="" onChange="form.submit()">
-					<option value="">Selecteer een categorie</option>
-					<?php while ($row = $categorieen->fetch_assoc()) { ?>
-						<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
-					<?php } ?>
-				</select></td>
-			<td><input type="text" required></td>
-			<td><input type="text" required></td>
-			<td><input type="text" required></td>
-			<td><input type="submit" name="Verstuur" value="registreer"></td>
-		</tbody>
-		</form>
-		</table>
-		</div>
-		<br>
-		<center>
+			<button class="knop" onclick="artikel('toe')">Toevoegen</button>
+			<button class="knop" onclick="artikel('wij')">Wijzigen</button>
+			<button class="knop" onclick="artikel('ver')">Verwijderen</button><br>
+				<caption>Toevoegen</caption>
+					<table border=1>
+					<thead>
+						<tr>
+							<th>Groep</th>
+							<th>Naam artikel</th>
+							<th>Info artikel</th>
+							<th>Link foto</th>
+						</tr>
+					</thead>
+			</center>
+			<tbody>
+				<td><select name="select" value="" onChange="form.submit()">
+						<option value="">Selecteer een categorie</option>
+						<?php while ($row = $categorieen->fetch_assoc()) { ?>
+							<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
+						<?php } ?>
+					</select></td>
+				<td><input type="text" required></td>
+				<td><input type="text" required></td>
+				<td><input type="text" required></td>
+				<td><input type="submit" name="Verstuur" value="registreer"></td>
+			</tbody>
+			</form>
+			</table>
+			</div>
+			<br>
+			<center>
 
-			<caption>Aanpassen</caption>
-			<table border=1>
-				<thead>
-					<tr>
-						<th>categorie</th>
-						<th>Artikel</th>
-						<th>Naam artikel</th>
-						<th>Info artikel</th>
-						<th>Link foto</th>
-					</tr>
-				</thead>
-		</center>
+				<caption>Aanpassen</caption>
+				<table border=1>
+					<thead>
+						<tr>
+							<th>categorie</th>
+							<th>Artikel</th>
+							<th>Naam artikel</th>
+							<th>Info artikel</th>
+							<th>Link foto</th>
+						</tr>
+					</thead>
+			</center>
 		<tbody>
 			<?php $categorieen = $con->query("SELECT * FROM categorieen"); ?>
 			<td><select name="select" value="" onChange="form.submit()">
@@ -232,6 +235,50 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 		</form>
 		</table>
 		</div>
+		<h2>Account</h2>
+			<button class="knop" onclick="account('atoe')">Toevoegen</button>
+			<button class="knop" onclick="account('aaan')">Aanpassen</button>
+			<button class="knop" onclick="account('aver')">Verwijderen</button>
+			<div id="atoe">
+				<form method="POST">
+					<h3>Toevoegen</h3>
+					<input type="hidden" name="form" value="atoevoegen">
+					<input type="text" name="nname" placeholder="Naam" required>
+					<input type="password" name="npass" placeholder="Wachtwoord" required>
+					<button>Toevoegen</button>
+				</form>
+			</div>
+			<div id="aaan">
+				<form method="POST">
+					<h3>Aanpassen</h3>
+					<input type="hidden" name="form" value="aaanpassen">
+					<select name="select">
+                        <option value="">Selecteer een gebruiker</option>
+						<?php $accounts = $con->query("SELECT * FROM users");
+						while ($row = $accounts->fetch_assoc()) { ?>
+						<option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+						<?php } ?>
+					</select>
+					<input type="text" name="nname" placeholder="Nieuwe naam" required>
+					<input type="password" name="npass" placeholder="Nieuwe wachtwoord" required>
+					<button>Aanpassen</button>
+				</form>
+			</div>
+			<div id="aver">
+				<form method="POST">
+					<h3>Verwijderen</h3>
+					<input type="hidden" name="form" value="averwijder">
+					<select name="select" required>
+                        <option value="">Selecteer een gebruiker</option>
+						<?php $accounts = $con->query("SELECT * FROM users");
+						while ($row = $accounts->fetch_assoc()) { ?>
+						<option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+						<?php } ?>
+					</select>
+					<button>Verwijderen</button>
+				</form>
+			</div>
+			<br><br><br>
 </body>
 
 </html>
