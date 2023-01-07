@@ -43,7 +43,6 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 							<th>Datum uitleen</th>
 							<th>Artikel</th>
 							<th>Datum terug</th>
-							<th>specificaties</th>
 						</tr>
 						<?php
                         while ($row = $tolate->fetch_assoc()) {
@@ -56,7 +55,6 @@ $categorieen = $con->query("SELECT * FROM categorieen");
                             <td><?= $row['datumuit']?></td>
                             <td><?= $producttolate['naam']?></td>
                             <td><?= $row['datumin']?></td>
-                            <td><?= $producttolate['info']?></td>
                         </tr>
                         <?php 
                         }
@@ -69,7 +67,7 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 				<br><br><br>
 			</div>
 			<div class="grote" id="vandag">
-				<?php if (!$today->num_rows == 0) {?>
+				<?php if (!$now->num_rows == 0) {?>
 				<table border='1'>
 					<h3>Vandaag Inleveren</h3>
 					<thead>
@@ -79,7 +77,6 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 							<th>Datum uitleen</th>
 							<th>Artikel</th>
 							<th>Datum terug</th>
-							<th>specificaties</th>
 						</tr>
 						<?php
                         while ($row = $now->fetch_assoc()) {
@@ -92,7 +89,6 @@ $categorieen = $con->query("SELECT * FROM categorieen");
                             <td><?= $row['datumuit'] ?></td>
                             <td><?= $producttoday['naam']?></td>
                             <td><?= $row['datumin']?></td>
-                            <td><?= $producttoday['info']?></td>
                         </tr>
                         <?php 
                         }
@@ -116,10 +112,9 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 							<th>Datum uitleen</th>
 							<th>Artikel</th>
 							<th>Datum terug</th>
-							<th>specificaties</th>
 						</tr>
 						<?php
-                        while ($row = $stilaway->fetch_assoc()) {
+                        while ($row = $out->fetch_assoc()) {
 						$productstil = $con->query("SELECT * FROM artikelen WHERE barcode='".$row['barcode']."'");
 						$productstil = $productstil->fetch_assoc()
                         ?>
@@ -129,7 +124,6 @@ $categorieen = $con->query("SELECT * FROM categorieen");
                             <td><?= $row['datumuit'] ?></td>
                             <td><?= $productstil['naam']?></td>
                             <td><?= $row['datumin']?></td>
-                            <td><?= $productstil['info']?></td>
                         </tr>
                         <?php 
                         }
