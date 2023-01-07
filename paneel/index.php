@@ -32,109 +32,115 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 			<button class="knop" onclick="artikelen('telaat')">Te Laat</button>
 			<button class="knop" onclick="artikelen('vandag')">Vandaag inleveren</button>
 			<button class="knop" onclick="artikelen('moment')">Uitgeleend/Geplanned</button>
-		<div class="grote">
-			<table border='1'>
-				<caption>Te laat</caption> </BR>
-				<thead>
-					<tr>
-						<th>Naam</th>
-						<th>Mail</th>
-						<th>Datum</th>
-						<th>Artikel</th>
-						<th>Datum terug</th>
-					</tr>
-				</thead>
-
-		</div>
-		<?php
-		while ($row = $tolate->fetch_assoc()) {
-			$producttolate = $con->query("SELECT * FROM artikelen WHERE barcode='" . $row['barcode'] . "'");
-			$producttolate = $producttolate->fetch_assoc()
-		?>
-			<tbody>
-				<tr>
-					<td><?= $row['naam'] ?></td>
-					<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
-					<td><?= $row['datumuit'] ?></td>
-					<td><?= $producttolate['naam'] ?></td>
-					<td><?= $row['datumin'] ?></td>
-				</tr>
-			</tbody>
-		<?php
-		}
-		?>
-		</table>
-		</table>
-	</center> <br><br><br><br>
-	<hr>
-	<<center>
-		<div class="grote">
-			<table border='1'>
-				<caption>Vandaag inleveren</caption> </BR>
-				<thead>
-					<tr>
-						<th>Naam</th>
-						<th>Mail</th>
-						<th>Datum</th>
-						<th>Artikel</th>
-						<th>Datum terug</th>
-					</tr>
-				</thead>
-		</div>
-		<?php
-		while ($row = $now->fetch_assoc()) {
-			$productnow = $con->query("SELECT * FROM artikelen WHERE barcode='" . $row['barcode'] . "'");
-			$productnow = $productnow->fetch_assoc()
-		?>
-			<tbody>
-				<tr>
-					<td><?= $row['naam'] ?></td>
-					<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
-					<td><?= $row['datumuit'] ?></td>
-					<td><?= $productnow['naam'] ?></td>
-					<td><?= $row['datumin'] ?></td>
-				</tr>
-			</tbody>
-		<?php
-		}
-		?>
-		</table>
-		</center> <br><br><br><br>
-		<hr>
-		<center>
-			<div class="grote">
+			<div class="grote" id="telaat">
+				<?php if (!$tolate->num_rows == 0) {?>
 				<table border='1'>
-					<caption>Momenteel uitgeleend</caption> </BR>
+					<h3>Te laat</h3>
 					<thead>
 						<tr>
 							<th>Naam</th>
 							<th>Mail</th>
-							<th>Datum</th>
+							<th>Datum uitleen</th>
 							<th>Artikel</th>
 							<th>Datum terug</th>
+							<th>specificaties</th>
 						</tr>
+						<?php
+                        while ($row = $tolate->fetch_assoc()) {
+						$producttolate = $con->query("SELECT * FROM artikelen WHERE barcode='".$row['barcode']."'");
+						$producttolate = $producttolate->fetch_assoc()
+                        ?>
+                        <tr>
+                            <td><?= $row['naam'] ?></td>
+                            <td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
+                            <td><?= $row['datumuit']?></td>
+                            <td><?= $producttolate['naam']?></td>
+                            <td><?= $row['datumin']?></td>
+                            <td><?= $producttolate['info']?></td>
+                        </tr>
+                        <?php 
+                        }
+                        ?>
 					</thead>
+				</table>
+				<?php }else{ ?>
+					<h3>Er zijn geen te laat ingeleverde artikelen</h3>
+				<?php } ?>
+				<br><br><br>
 			</div>
-			<?php
-			while ($row = $out->fetch_assoc()) {
-				$productout = $con->query("SELECT * FROM artikelen WHERE barcode='" . $row['barcode'] . "'");
-				$productout = $productout->fetch_assoc()
-			?>
-				<tbody>
-					<tr>
-						<td><?= $row['naam'] ?></td>
-						<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
-						<td><?= $row['datumuit'] ?></td>
-						<td><?= $productout['naam'] ?></td>
-						<td><?= $row['datumin'] ?></td>
-
-					</tr>
-				</tbody>
-			<?php
-			}
-			?>
-			</table>
-		</center> <br><br><br><br>
+			<div class="grote" id="vandag">
+				<?php if (!$today->num_rows == 0) {?>
+				<table border='1'>
+					<h3>Vandaag Inleveren</h3>
+					<thead>
+						<tr>
+							<th>Naam</th>
+							<th>Mail</th>
+							<th>Datum uitleen</th>
+							<th>Artikel</th>
+							<th>Datum terug</th>
+							<th>specificaties</th>
+						</tr>
+						<?php
+                        while ($row = $now->fetch_assoc()) {
+						$producttoday = $con->query("SELECT * FROM artikelen WHERE barcode='".$row['barcode']."'");
+						$producttoday = $producttoday->fetch_assoc()
+                        ?>
+                        <tr>
+                            <td><?= $row['naam'] ?></td>
+                            <td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
+                            <td><?= $row['datumuit'] ?></td>
+                            <td><?= $producttoday['naam']?></td>
+                            <td><?= $row['datumin']?></td>
+                            <td><?= $producttoday['info']?></td>
+                        </tr>
+                        <?php 
+                        }
+                        ?>
+					</thead>
+				</table>
+				<?php }else{ ?>
+					<h3>Er zijn geen vandaag in te leverde artikelen</h3>
+				<?php } ?>
+				<br><br><br>
+			</div>
+		<center>
+		<div class="grote" id="moment">
+				<?php if (!$out->num_rows == 0) {?>
+				<table border='1'>
+					<h3>Uitgeleend/Geplanned</h3>
+					<thead>
+						<tr>
+							<th>Naam</th>
+							<th>Mail</th>
+							<th>Datum uitleen</th>
+							<th>Artikel</th>
+							<th>Datum terug</th>
+							<th>specificaties</th>
+						</tr>
+						<?php
+                        while ($row = $stilaway->fetch_assoc()) {
+						$productstil = $con->query("SELECT * FROM artikelen WHERE barcode='".$row['barcode']."'");
+						$productstil = $productstil->fetch_assoc()
+                        ?>
+                        <tr>
+                            <td><?= $row['naam'] ?></td>
+                            <td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
+                            <td><?= $row['datumuit'] ?></td>
+                            <td><?= $productstil['naam']?></td>
+                            <td><?= $row['datumin']?></td>
+                            <td><?= $productstil['info']?></td>
+                        </tr>
+                        <?php 
+                        }
+                        ?>
+					</thead>
+				</table>
+				<?php }else{ ?>
+					<h3>Er zijn geen vandaag in te leverde artikelen</h3>
+				<?php } ?>
+				<br><br><br>
+			</div>
 		<hr>
 		<center>
 			<button class="knop" onclick="artikel('toe')">Toevoegen</button>
@@ -176,7 +182,6 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 							<th>Artikel</th>
 							<th>Naam artikel</th>
 							<th>Info artikel</th>
-							<th>Link foto</th>
 						</tr>
 					</thead>
 			</center>
@@ -191,7 +196,6 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 				</select>
 			</td>
 
-			<td><input type="text" required></td>
 			<td><input type="text" required></td>
 			<td><input type="text" required></td>
 			<td><input type="submit" name="Verstuur" value="registreer"></td>
@@ -224,6 +228,7 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 		</form>
 		</table>
 		</div>
+		<hr>
 		<h2>Account</h2>
 			<button class="knop" onclick="account('atoe')">Toevoegen</button>
 			<button class="knop" onclick="account('aaan')">Aanpassen</button>
