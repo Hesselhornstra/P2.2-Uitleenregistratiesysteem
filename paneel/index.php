@@ -28,6 +28,10 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 <button class="uitlog" onclick="location.href = `/`">Artikelen</button>
 	<hr>
 	<center>
+		<h2>Artikelen</h2>
+			<button class="knop" onclick="artikelen('telaat')">Te Laat</button>
+			<button class="knop" onclick="artikelen('vandag')">Vandaag inleveren</button>
+			<button class="knop" onclick="artikelen('moment')">Uitgeleend/Geplanned</button>
 		<div class="grote">
 			<table border='1'>
 				<caption>Te laat</caption> </BR>
