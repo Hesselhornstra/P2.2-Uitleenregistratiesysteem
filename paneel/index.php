@@ -24,7 +24,8 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 </head>
 
 <body>
-	<p class="grote">uitloggen</p>
+<button class="uitlog" onclick="location.href = `/loguit`">Uitloggen</button>
+<button class="uitlog" onclick="location.href = `/`">Artikelen</button>
 	<hr>
 	<center>
 		<div class="grote">
