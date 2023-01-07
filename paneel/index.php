@@ -144,7 +144,7 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 					<table border=1>
 					<thead>
 						<tr>
-							<th>Groep</th>
+							<th>catagorie</th>
 							<th>Naam artikel</th>
 							<th>Info artikel</th>
 							<th>Link foto</th>
@@ -173,7 +173,6 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 				<table border=1>
 					<thead>
 						<tr>
-							<th>categorie</th>
 							<th>Artikel</th>
 							<th>Naam artikel</th>
 							<th>Info artikel</th>
@@ -183,12 +182,6 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 			</center>
 		<tbody>
 			<?php $categorieen = $con->query("SELECT * FROM categorieen"); ?>
-			<td><select name="select" value="" onChange="form.submit()">
-					<option value="">Selecteer een categorie</option>
-					<?php while ($row = $categorieen->fetch_assoc()) { ?>
-						<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
-					<?php } ?>
-				</select></td>
 			<td>
 				<select>
 					<option value="">Selecteer een artikel</option>
@@ -212,24 +205,20 @@ $categorieen = $con->query("SELECT * FROM categorieen");
 			<table border=1>
 				<thead>
 					<tr>
-						<th>Artikel</th>
+						
 						<th>Naam artikel</th>
-						<th>Info artikel</th>
-						<th>Link foto</th>
 					</tr>
 				</thead>
 		</center>
 		<tbody>
-			<td><select name="select" value="" onChange="form.submit()">
-					<option value="">Selecteer een categorie</option>
+
+			</td>
+			<td><select>
+					<option value="">Selecteer een artikel</option>
 					<?php while ($row = $artnaam->fetch_assoc()) { ?>
 						<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
 					<?php } ?>
-				</select>
-			</td>
-			<td><input type="text" required></td>
-			<td><input type="text" required></td>
-			<td><input type="text" required></td>
+				</select></td>
 			<td><input type="submit" name="Verstuur" value="registreer"></td>
 		</tbody>
 		</form>
