@@ -10,15 +10,27 @@ $stilaway = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	if ($_POST['form'] == "artiktoe") {
 		$con->query("INSERT INTO artikelen (naam, info, img, barcode, cate) VALUES ('".$_POST['naam']."', '".$_POST['info']."', '".$_POST['foto']."', '".$_POST['barcode']."', '".$_POST['select']."')");
-		Header("Refresh:0");//Wip
+		Header("Refresh:0");
 	}
 	if ($_POST['form'] == "artikaan") {
-		//Wip
+		$con->query("UPDATE artikelen SET naam = '".$_POST['naam']."', info = '".$_POST['info']."', img = '".$_POST['foto']."', barcode = '".$_POST['barcode']."' WHERE id='".$_POST['artikel']."'");
 		Header("Refresh:0");
 	}
     if ($_POST['form'] == "artikver") {
-		$con->query("DELETE FROM artikelen WHERE id='".$_POST['select']."'");
-		Header("Refresh:0");//Wip
+		$con->query("DELETE FROM artikelen WHERE id='".$_POST['artikel']."'");
+		Header("Refresh:0");
+	}
+	if ($_POST['form'] == "catetoe") {
+		$con->query("INSERT INTO categorieen (naam, img) VALUES ('".$_POST['naam']."', '".$_POST['foto']."')");
+		Header("Refresh:0");
+	}
+	if ($_POST['form'] == "cateaan") {
+		$con->query("UPDATE categorieen SET naam = '".$_POST['naam']."', img = '".$_POST['foto']."' WHERE id='".$_POST['artikel']."'");
+		Header("Refresh:0");
+	}
+    if ($_POST['form'] == "catever") {
+		$con->query("DELETE FROM categorieen WHERE id='".$_POST['cate']."'");
+		Header("Refresh:0");
 	}
 	if ($_POST['form'] == "atoevoegen") {
 		$con->query("INSERT INTO users (name, password) VALUES ('".$_POST['nname']."', '".password_hash($_POST['npass'],PASSWORD_DEFAULT)."')");
@@ -44,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		<title>Paneel - Uitleenregistratiesysteem</title>
 		<link rel="stylesheet" href="index.css">
 		<script src="index.js" defer></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<button class="uitlog" onclick="location.href = `/loguit`">Uitloggen</button>
@@ -158,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					</thead>
 				</table>
 				<?php }else{ ?>
-					<h3>Er zijn geen vandaag in te leverde artikelen</h3>
+					<h3>Er zijn geen uitgeleende artikelen</h3>
 				<?php } ?>
 				<br><br><br>
 			</div>
@@ -175,7 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <option value="">Selecteer een categorie</option>
 						<?php $categorie = $con->query("SELECT * FROM categorieen WHERE not id='0'");
 						while ($row = $categorie->fetch_assoc()) { ?>
-						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
+						<option value="<?= $row['id'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
 					</select>
 					<input type="text" name="naam" placeholder="Naam" required>
@@ -191,9 +204,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="hidden" name="form" value="artikaan">
 					<select name="artikel" required>
                         <option value="">Selecteer een artikel</option>
-						<?php $artikelcat = $con->query("SELECT * FROM artikelen WHERE not cate='0'");//Wip
+						<?php $artikelcat = $con->query("SELECT * FROM artikelen WHERE not cate='0'");
 						while ($row = $artikelcat->fetch_assoc()) { ?>
-						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
+						<option value="<?= $row['id'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
 					</select>
 					<input type="text" name="naam" placeholder="Naam" required>
@@ -209,9 +222,53 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="hidden" name="form" value="artikver">
 					<select name="artikel" required>
                         <option value="">Selecteer een artikel</option>
-						<?php $artikelcat = $con->query("SELECT * FROM artikelen WHERE not cate='0'");//Wip
+						<?php $artikelcat = $con->query("SELECT * FROM artikelen WHERE not cate='0'");
 						while ($row = $artikelcat->fetch_assoc()) { ?>
-						<option value="<?= $row['naam'] ?>"><?= $row['naam'] ?></option>
+						<option value="<?= $row['id'] ?>"><?= $row['naam'] ?></option>
+						<?php } ?>
+					</select>
+					<button>Verwijderen</button>
+				</form>
+			</div>
+			<br><hr>
+			<h2>Categorieën</h2>
+			<button class="knop" onclick="categorie('ctoe')">Toevoegen</button>
+			<button class="knop" onclick="categorie('cwij')">Wijzigen</button>
+			<button class="knop" onclick="categorie('cver')">Verwijderen</button>
+			<div class="bord" id="ctoe">
+				<form method="POST">
+					<h3>Toevoegen</h3>
+					<input type="hidden" name="form" value="catetoe">
+					<input type="text" name="naam" placeholder="Naam" required>
+					<input type="text" name="foto" placeholder="Foto" required>
+					<button>Toevoegen</button>
+				</form>
+			</div>
+			<div class="bord" id="cwij">
+				<form method="POST">
+					<h3>Aanpassen</h3>
+					<input type="hidden" name="form" value="cateaan">
+					<select name="artikel" required>
+                        <option value="">Selecteer een categorie</option>
+						<?php $artikelcat = $con->query("SELECT * FROM categorieen WHERE not id='0'");
+						while ($row = $artikelcat->fetch_assoc()) { ?>
+						<option value="<?= $row['id'] ?>"><?= $row['naam'] ?></option>
+						<?php } ?>
+					</select>
+					<input type="text" name="naam" placeholder="Naam" required>
+					<input type="text" name="foto" placeholder="Foto" required>
+					<button>Aanpassen</button>
+				</form>
+			</div>
+			<div class="bord" id="cver">
+				<form method="POST">
+					<h3>Verwijderen</h3>
+					<input type="hidden" name="form" value="catever">
+					<select name="cate" required>
+                        <option value="">Selecteer een categorie</option>
+						<?php $artikelcat = $con->query("SELECT * FROM categorieen WHERE not id='0'");
+						while ($row = $artikelcat->fetch_assoc()) { ?>
+						<option value="<?= $row['id'] ?>"><?= $row['naam'] ?></option>
 						<?php } ?>
 					</select>
 					<button>Verwijderen</button>

@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		<div>
 			<?php if (isset($_SESSION['loggedin']) == true){ ?>
 			<button class="eastereggbutton" id="eateregb" onclick="eateregg()"></button>
+			<button class="paneel" onclick="location.href = `/paneel`">Paneel</button>
 			<?php } ?>
 			<form action="<?php $_SERVER["PHP_SELF"] ?>" method="GET">
 				<input type="text" name="zoek" id="zoekinput" placeholder="Zoeken...">

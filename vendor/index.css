@@ -39,7 +39,7 @@ table tr td a{
     background-color: #0D334C;
     border-color: #fff;
 }
-#vandag, #moment, #wij, #ver, #aaan, #aver{
+#vandag, #moment, #wij, #ver, #aaan, #aver, #cwij, #cver{
     display: none;
 }
 /* scroll balk */
