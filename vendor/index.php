@@ -78,7 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 							<th>Datum uitleen</th>
 							<th>Artikel</th>
 							<th>Datum terug</th>
-							<th>specificaties</th>
 						</tr>
 						<?php
                         while ($row = $tolate->fetch_assoc()) {
@@ -88,10 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <tr>
                             <td><?= $row['naam'] ?></td>
                             <td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
-                            <td><?= $row['datumuit']?></td>
+                            <td><?= date("d-m-Y", strtotime($row['datumuit']))?></td>
                             <td><?= $producttolate['naam']?></td>
-                            <td><?= $row['datumin']?></td>
-                            <td><?= $producttolate['info']?></td>
+                            <td><?= date("d-m-Y", strtotime($row['datumin']))?></td>
                         </tr>
                         <?php 
                         }
@@ -114,7 +112,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 							<th>Datum uitleen</th>
 							<th>Artikel</th>
 							<th>Datum terug</th>
-							<th>specificaties</th>
 						</tr>
 						<?php
                         while ($row = $today->fetch_assoc()) {
@@ -124,10 +121,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <tr>
                             <td><?= $row['naam'] ?></td>
                             <td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
-                            <td><?= $row['datumuit'] ?></td>
+                            <td><?= date("d-m-Y", strtotime($row['datumuit']))?></td>
                             <td><?= $producttoday['naam']?></td>
-                            <td><?= $row['datumin']?></td>
-                            <td><?= $producttoday['info']?></td>
+                            <td><?= date("d-m-Y", strtotime($row['datumin']))?></td>
                         </tr>
                         <?php 
                         }
@@ -150,7 +146,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 							<th>Datum uitleen</th>
 							<th>Artikel</th>
 							<th>Datum terug</th>
-							<th>specificaties</th>
 						</tr>
 						<?php
                         while ($row = $stilaway->fetch_assoc()) {
@@ -160,10 +155,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <tr>
                             <td><?= $row['naam'] ?></td>
                             <td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
-                            <td><?= $row['datumuit'] ?></td>
+                            <td><?= date("d-m-Y", strtotime($row['datumuit']))?></td>
                             <td><?= $productstil['naam']?></td>
-                            <td><?= $row['datumin']?></td>
-                            <td><?= $productstil['info']?></td>
+                            <td><?= date("d-m-Y", strtotime($row['datumin']))?></td>
                         </tr>
                         <?php 
                         }

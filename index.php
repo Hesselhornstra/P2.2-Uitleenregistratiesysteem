@@ -97,7 +97,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<?php }?>
 				<img src="<?= $artikelrow['img'] ?>" alt="<?= $artikelrow['naam'] ?>"><br>
 				<a class="naam"><?= $artikelrow['naam'] ?></a>
-				<a class="info"><?= $artikelrow['info'] ?></a>
+				<?php $meuk = preg_replace( "/\r|\n/", "", $artikelrow['info'] ); ?>
+				<a class="info"><?php echo substr($artikelrow['info'],0,320); if (strlen($artikelrow['info']) > 319) { echo "..."; } ?></a>
+				<?php if (strlen($artikelrow['info']) > 319) { ?>
+				<button class="meerinfo" onclick="alert('<?php echo addslashes($meuk); ?>');">Meer info</button>
+				<?php } ?>
 				<div class="omhulsol">
 				<?php require 'vendor/autoload.php'; $generator = new Picqer\Barcode\BarcodeGeneratorHTML(); ?>
 				<a class="barcode"><?php echo $generator->getBarcode($artikelrow['barcode'], $generator::TYPE_CODE_128); ?></a>

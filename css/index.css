@@ -258,6 +258,24 @@ body {
     background-color: #0D334C;
     border-color: #fff;
 }
+.meerinfo {
+    position: absolute;
+    top: 28.5vw;
+    left: -59vw;
+    width: 7vw;
+    height: 3vh;
+    background-color: #176292;
+    color: #fff;
+    border: gray solid 0.1vw;
+    border-radius: 0.3vw;
+    margin-bottom: 4vw;
+    margin-left: 66.9vw;
+}
+.meerinfo:hover {
+    cursor: pointer;
+    background-color: #0D334C;
+    border-color: #fff;
+}
 /* alerts */
 .eastereggbutton{
     position: fixed;
