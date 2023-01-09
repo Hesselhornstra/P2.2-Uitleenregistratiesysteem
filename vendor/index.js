@@ -28,6 +28,21 @@ function artikel(welke){
         document.getElementById('ver').style.display = 'block'
     }
 }
+function categorie(welke){
+    if (welke === "ctoe"){
+        document.getElementById('ctoe').style.display = 'block'
+        document.getElementById('cwij').style.display = 'none'
+        document.getElementById('cver').style.display = 'none'
+    }else if (welke == "cwij"){
+        document.getElementById('ctoe').style.display = 'none'
+        document.getElementById('cwij').style.display = 'block'
+        document.getElementById('cver').style.display = 'none'
+    }else if (welke == "cver"){
+        document.getElementById('ctoe').style.display = 'none'
+        document.getElementById('cwij').style.display = 'none'
+        document.getElementById('cver').style.display = 'block'
+    }
+}
 function account(welke){
     if (welke === "atoe"){
         document.getElementById('atoe').style.display = 'block'
