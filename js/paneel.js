@@ -1,4 +1,4 @@
-document.getElementById("telaat").style.display = "none";
+
 
 function telaat() {
     var x = document.getElementById("telaat");
@@ -28,7 +28,6 @@ function moment() {
         x.style.display = "none";
     }
 }
-document.getElementById("toe").style.display = "none";
 
 function toe() {
     var x = document.getElementById("toe");
@@ -58,7 +57,6 @@ function ver() {
         x.style.display = "none";
     }
 }
-document.getElementById("atoe").style.display = "none";
 
 function atoe() {
     var x = document.getElementById("atoe");
