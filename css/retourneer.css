@@ -124,7 +124,7 @@ body {
     float: right;
     width: 15vw;
     height: 10vw;
-    top: -14.8vw;
+    top: 1vw;
     left: -1vw;
 }
 /* alerts */
@@ -173,6 +173,7 @@ body {
     position: absolute;
     right: 5vw;
     margin-right: 1vw;
+    top: 15vw;
 }
 .closebtn:hover {
 	color: black;
