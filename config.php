@@ -8,7 +8,7 @@ ini_set("max_execution_time",500);
 $db_host = "localhost";
 $db_user = "deb85590_p22k1t4";
 $db_pass = "dADbg3ql7";
-$db_data = "uitleensysteem";
+$db_data = "deb85590_p22k1t4";
 
 $con = new mysqli($db_host,$db_user,$db_pass,$db_data);
 ?>
