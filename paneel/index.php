@@ -10,10 +10,6 @@ $artnaam = $con->query("SELECT * FROM artikelen");
 $artiknaam = $con->query("SELECT * FROM artikelen");
 $categorieen = $con->query("SELECT * FROM categorieen");
 
-$naamart =  $_REQUEST['art-naam'];
-$infoart = $_REQUEST['art-info'];
-$fotoart =  $_REQUEST['art-foto'];
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($_POST['form'] == "art-nieuw") {
 		$sql = "INSERT INTO artikelen VALUES ('$naamart','$infoart','$fotoart')";
