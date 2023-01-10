@@ -49,3 +49,38 @@
 #vandag, #moment, #wij, #ver, #aaan, #aver, #cwij, #cver{
     display: none;
 }
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #23272a;
+	color: #fff;
+}
+.knop {
+	top: 1.0vw;
+	right: 1.0vw;
+	width: 10vw;
+	height: 3vh;
+	background-color: rgb(53, 53, 65);
+	color: #fff;
+	border: gray solid 0.1vw;
+	border-radius: 0.3vw;
+}
+.inputtype {
+	background-color: #2b2f31;
+	color: white;
+	height: 3vw;
+	border: rgb(98, 98, 98) solid 0.05vw;
+    box-shadow: 0.1vw 0.1vw 0.1vw gray;
+}
+.uitlog {
+	border-radius: 0.3vw;
+	background-color:rgb(67, 67, 81);
+    color: white;
+}
+.knopp {
+	height: 3vw;
+	width: 6vw;
+	background-color: #2b2f31;
+	border: rgb(98, 98, 98) solid 0.05vw;
+	color: white;
+}

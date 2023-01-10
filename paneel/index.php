@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<script src="/js/paneel.js" defer></script>
 </head>
 
-<body>
+<body style="body">
 	<button class="uitlog" onclick="location.href = `/loguit`">Uitloggen</button>
 	<button class="uitlog" onclick="location.href = `/`">Artikelen</button>
 	<hr>
@@ -150,51 +150,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<button class="knop" onclick="artikel('wij')">Wijzigen</button>
 				<button class="knop" onclick="artikel('ver')">Verwijderen</button><br>
 				<div id="toe">
-				<h3>Toevoegen</h3>
-				<table border=1>
-					<thead>
-						<tr>
-							<th>categorie</th>
-							<th>Naam artikel</th>
-							<th>Info artikel</th>
-							<th>Link foto</th>
-						</tr>
-					</thead>
+					<h3>Toevoegen</h3>
+					<table border=1>
+						<thead>
+							<tr>
+								<th>categorie</th>
+								<th>Naam artikel</th>
+								<th>Info artikel</th>
+								<th>Link foto</th>
+							</tr>
+						</thead>
 			</center>
 			<tbody>
-				<td><select name="select" value="" onChange="form.submit()">
+				<td><select class="inputtype" name="select" value="" onChange="form.submit()">
 						<option value="">Selecteer een categorie</option>
 						<?php while ($row = $categorieen->fetch_assoc()) { ?>
 							<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
 						<?php } ?>
 					</select></td>
 				<form method="post">
-					<input type="hidden" name="form" value="art-nieuw">
-					<td><input type="text" name="art-naam" required></td>
-					<td><input type="text" name="art-info" required></td>
-					<td><input type="text" name="art-foto" required></td>
-					<td><button name="registreer">registreer</button></td>
+					<input class="inputtype" type="hidden" name="form" value="art-nieuw">
+					<td><input class="inputtype" type="text" name="art-naam" required></td>
+					<td><input class="inputtype" type="text" name="art-info" required></td>
+					<td><input class="inputtype" type="text" name="art-foto" required></td>
+					<td><button class="knopp" name="registreer">registreer</button></td>
 			</tbody>
 			</form>
 			</table>
 			<br>
 			</div>
 			<center>
-                <div id="wij">
-				<h3>Aanpassen</h3>
-				<table border=1>
-					<thead>
-						<tr>
-							<th>Artikel</th>
-							<th>Naam artikel</th>
-							<th>Info artikel</th>
-						</tr>
-					</thead>
+				<div id="wij">
+					<h3>Aanpassen</h3>
+					<table border=1>
+						<thead>
+							<tr>
+								<th>Artikel</th>
+								<th>Naam artikel</th>
+								<th>Info artikel</th>
+							</tr>
+						</thead>
 			</center>
 			<tbody>
 				<?php $categorieen = $con->query("SELECT * FROM categorieen"); ?>
 				<td>
-					<select>
+					<select class="inputtype">
 						<option value="">Selecteer een artikel</option>
 						<?php while ($row = $artnaam->fetch_assoc()) { ?>
 							<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
@@ -202,9 +202,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					</select>
 				</td>
 
-				<td><input type="text" required></td>
-				<td><input type="text" required></td>
-				<td><input type="submit" name="Verstuur" value="aanpassen"></td>
+				<td><input class="inputtype" type="text" required></td>
+				<td><input class="inputtype" type="text" required></td>
+				<td><input class="knopp" type="submit" name="Verstuur" value="aanpassen"></td>
 			</tbody>
 			</form>
 			</table>
@@ -212,25 +212,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			</div>
 			<center>
 				<div id="ver">
-				<h3>verwijderen</h3>
-				<table border=1>
-					<thead>
-						<tr>
+					<h3>verwijderen</h3>
+					<table border=1>
+						<thead>
+							<tr>
 
-							<th>Naam artikel</th>
-						</tr>
-					</thead>
+								<th>Naam artikel</th>
+							</tr>
+						</thead>
 			</center>
 			<tbody>
 
 				</td>
-				<td><select>
+				<td><select class="inputtype">
 						<option value="">Selecteer een artikel</option>
 						<?php while ($row = $artiknaam->fetch_assoc()) { ?>
 							<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
 						<?php } ?>
 					</select></td>
-				<td><input type="submit" name="Verstuur" value="verwijderen"></td>
+				<td><input class="knopp" type="submit" name="Verstuur" value="verwijderen"></td>
 			</tbody>
 			</form>
 			</table>
@@ -244,40 +244,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<div id="atoe">
 				<form method="POST">
 					<h3>Toevoegen</h3>
-					<input type="hidden" name="form" value="atoevoegen">
-					<input type="text" name="nname" placeholder="Naam" required>
-					<input type="password" name="npass" placeholder="Wachtwoord" required>
-					<button>Toevoegen</button>
+					<input class="inputtype" type="hidden" name="form" value="atoevoegen">
+					<input class="inputtype" type="text" name="nname" placeholder="Naam" required>
+					<input class="inputtype" type="password" name="npass" placeholder="Wachtwoord" required>
+					<button class="knopp">Toevoegen</button>
 				</form>
 			</div>
 			<div id="aaan">
 				<form method="POST">
 					<h3>Aanpassen</h3>
 					<input type="hidden" name="form" value="aaanpassen">
-					<select name="select">
+					<select class="inputtype" name="select">
 						<option value="">Selecteer een gebruiker</option>
 						<?php $accounts = $con->query("SELECT * FROM users");
 						while ($row = $accounts->fetch_assoc()) { ?>
 							<option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
 						<?php } ?>
 					</select>
-					<input type="text" name="nname" placeholder="Nieuwe naam" required>
-					<input type="password" name="npass" placeholder="Nieuwe wachtwoord" required>
-					<button>Aanpassen</button>
+					<input class="inputtype" type="text" name="nname" placeholder="Nieuwe naam" required>
+					<input class="inputtype" type="password" name="npass" placeholder="Nieuwe wachtwoord" required>
+					<button class="knopp">Aanpassen</button>
 				</form>
 			</div>
 			<div id="aver">
 				<form method="POST">
 					<h3>Verwijderen</h3>
-					<input type="hidden" name="form" value="averwijder">
-					<select name="select" required>
+					<input class="inputtype" type="hidden" name="form" value="averwijder">
+					<select class="inputtype" name="select" required>
 						<option value="">Selecteer een gebruiker</option>
 						<?php $accounts = $con->query("SELECT * FROM users");
 						while ($row = $accounts->fetch_assoc()) { ?>
 							<option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
 						<?php } ?>
 					</select>
-					<button>Verwijderen</button>
+					<button class="knopp">Verwijderen</button>
 				</form>
 			</div>
 			<br><br><br>
