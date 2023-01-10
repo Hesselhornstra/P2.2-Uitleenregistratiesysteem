@@ -241,9 +241,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<br><br>
 			<hr>
 			<h2>Account</h2>
-			<button class="knop" onclick="atoe()">Toevoegen</button>
-			<button class="knop" onclick="aaan()">Aanpassen</button>
-			<button class="knop" onclick="aver()">Verwijderen</button>
+			<button class="knop" onclick="categorie('ctoe')">Toevoegen</button>
+			<button class="knop" onclick="categorie('cwij')">Wijzigen</button>
+			<button class="knop" onclick="categorie('cver')">Verwijderen</button>
 			<div id="atoe">
 				<form method="POST">
 					<h3>Toevoegen</h3>
