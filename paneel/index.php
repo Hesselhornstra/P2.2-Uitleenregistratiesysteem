@@ -4,7 +4,6 @@ if ($_SESSION['loggedin'] != true) {
 	Header("Location: /");
 }
 $tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()");
-date("d-m-Y", strtotime(Hierkomtjeinput))
 $now = $con->query("SELECT * FROM artikeluit WHERE datumin = CURRENT_DATE()");
 $out = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()");
 $artnaam = $con->query("SELECT * FROM artikelen");
