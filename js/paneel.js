@@ -43,7 +43,22 @@ function categorie(welke){
         document.getElementById('cver').style.display = 'block'
     }
 }
-function account(welke){
+function catcat(welke) {
+    if (welke === "cattoe") {
+        document.getElementById('cattoe').style.display = 'block'
+        document.getElementById('catwij').style.display = 'none'
+        document.getElementById('catver').style.display = 'none'
+    } else if (welke == "catwij") {
+        document.getElementById('cattoe').style.display = 'none'
+        document.getElementById('catwij').style.display = 'block'
+        document.getElementById('catver').style.display = 'none'
+    } else if (welke == "catver") {
+        document.getElementById('cattoe').style.display = 'none'
+        document.getElementById('catwij').style.display = 'none'
+        document.getElementById('catver').style.display = 'block'
+    }
+}
+function account(welke) { 
     if (welke === "atoe"){
         document.getElementById('atoe').style.display = 'block'
         document.getElementById('aaan').style.display = 'none'
@@ -56,5 +71,5 @@ function account(welke){
         document.getElementById('atoe').style.display = 'none'
         document.getElementById('aaan').style.display = 'none'
         document.getElementById('aver').style.display = 'block'
-    }
+    } 
 }

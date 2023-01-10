@@ -7,6 +7,8 @@ $tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()")
 $now = $con->query("SELECT * FROM artikeluit WHERE datumin = CURRENT_DATE()");
 $out = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()");
 $artnaam = $con->query("SELECT * FROM artikelen");
+$artnaam1 = $con->query("SELECT * FROM categorieen");
+$artnaam2 = $con->query("SELECT * FROM categorieen");
 $artiknaam = $con->query("SELECT * FROM artikelen");
 $categorieen = $con->query("SELECT * FROM categorieen");
 
@@ -229,6 +231,92 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<td><select class="inputtype">
 						<option value="">Selecteer een artikel</option>
 						<?php while ($row = $artiknaam->fetch_assoc()) { ?>
+							<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
+						<?php } ?>
+					</select></td>
+				<td><input class="knopp" type="submit" name="Verstuur" value="verwijderen"></td>
+			</tbody>
+			</form>
+			</table>
+			</div>
+			<br><br>
+			<hr>
+			<br>
+			<center>
+				<h2>Categorieen</h2>
+				<button class="knop" onclick="catcat('cattoe')">Toevoegen</button>
+				<button class="knop" onclick="catcat('catwij')">Wijzigen</button>
+				<button class="knop" onclick="catcat('catver')">Verwijderen</button><br>
+				<div id="cattoe">
+					<h3>Toevoegen</h3>
+					<table border=1>
+						<thead>
+							<tr>
+								<th>Naam Categorie</th>
+								<th>Link foto</th>
+								<th></th>
+							</tr>
+						</thead>
+			</center>
+			<tbody>
+				<form method="post">
+					<input class="inputtype" type="hidden" name="form" value="art-nieuw">
+					<td><input class="inputtype" type="text" name="art-naam" required></td>
+					<td><input class="inputtype" type="text" name="art-info" required></td>
+					<td><button class="knopp" name="registreer">registreer</button></td>
+			</tbody>
+			</form>
+			</table>
+			<br>
+			</div>
+			<center>
+				<div id="catwij">
+					<h3>Aanpassen</h3>
+					<table border=1>
+						<thead>
+							<tr>
+								<th>Categorie</th>
+								<th>Naam categorie</th>
+								<th>foto categorie</th>
+								<th></th>
+							</tr>
+						</thead>
+			</center>
+			<tbody>
+				<td>
+					<select class="inputtype">
+						<option value="">Selecteer een categorie</option>
+						<?php while ($row = $artnaam1->fetch_assoc()) { ?>
+							<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
+						<?php } ?>
+					</select>
+				</td>
+
+				<td><input class="inputtype" type="text" required></td>
+				<td><input class="inputtype" type="text" required></td>
+				<td><input class="knopp" type="submit" name="Verstuur" value="aanpassen"></td>
+			</tbody>
+			</form>
+			</table>
+			<br>
+			</div>
+			<center>
+				<div id="catver">
+					<h3>verwijderen</h3>
+					<table border=1>
+						<thead>
+							<tr>
+								<th>Categorie</th>
+								<th></th>
+							</tr>
+						</thead>
+			</center>
+			<tbody>
+
+				</td>
+				<td><select class="inputtype">
+						<option value="">Selecteer een categorie</option>
+						<?php while ($row = $artnaam2->fetch_assoc()) { ?>
 							<option value="<?php echo $row['naam'] ?>"><?php echo $row['naam'] ?></option>
 						<?php } ?>
 					</select></td>
