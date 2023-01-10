@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<script src="/js/paneel.js" defer></script>
 </head>
 
-<body style="body">
+<body>
 	<button class="uitlog" onclick="location.href = `/loguit`">Uitloggen</button>
 	<button class="uitlog" onclick="location.href = `/`">Artikelen</button>
 	<hr>
