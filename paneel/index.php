@@ -149,9 +149,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<hr>
 			<br>
 			<center>
-				<button class="knop" onclick="toe()">Toevoegen</button>
-				<button class="knop" onclick="wij()">Wijzigen</button>
-				<button class="knop" onclick="ver()">Verwijderen</button><br>
+			<button class="knop" onclick="artikel('toe')">Toevoegen</button>
+			<button class="knop" onclick="artikel('wij')">Wijzigen</button>
+			<button class="knop" onclick="artikel('ver')">Verwijderen</button>
 				<div id="toe">
 				<h3>Toevoegen</h3>
 				<table border=1>
