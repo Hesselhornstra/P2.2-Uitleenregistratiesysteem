@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<textarea class="opmerking" name="opmerking" placeholder="opmerking" required="required"></textarea>
 				<button class="retour" type="submit"> retour nemen</button>
 			</form>
-			<a class="info"><br>Datum uit geleend:<br><?= $retourrow['datumuit'] ?><br><br><br>Datum terug verwacht:<br><?= $retourrow['datumin'] ?></a>
+			<a class="info"><br>Datum uit geleend:<br><?= date("d-m-Y", strtotime($retourrow['datumuit'])) ?><br><br><br>Datum terug verwacht:<br><?= date("d-m-Y", strtotime($retourrow['datumin'])) ?></a>
 			<div class="omhulsol">
 			<?php require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php'; $generator = new Picqer\Barcode\BarcodeGeneratorHTML(); ?>
 			<a class="barcode"><?php echo $generator->getBarcode($retourrow['barcode'], $generator::TYPE_CODE_128); ?></a>
