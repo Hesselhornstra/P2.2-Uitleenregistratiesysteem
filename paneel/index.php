@@ -39,9 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<hr>
 	<center>
 		<h2>Artikelen</h2>
-		<button class="knop" onclick="telaat()">Te Laat</button>
-		<button class="knop" onclick="vandag()">Vandaag inleveren</button>
-		<button class="knop" onclick="moment()">Uitgeleend/Geplanned</button>
+		<button class="knop" onclick="artikelen('telaat')">Te Laat</button>
+			<button class="knop" onclick="artikelen('vandag')">Vandaag inleveren</button>
+			<button class="knop" onclick="artikelen('moment')">Uitgeleend/Geplanned</button>
 		<div class="grote" id="telaat">
 			<?php if (!$tolate->num_rows == 0) { ?>
 				<table border='1'>
