@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<center>
 		<h2>Artikelen</h2>
 		<button class="knop" onclick="artikelen('telaat')">Te Laat</button>
-			<button class="knop" onclick="artikelen('vandag')">Vandaag inleveren</button>
-			<button class="knop" onclick="artikelen('moment')">Uitgeleend/Geplanned</button>
+		<button class="knop" onclick="artikelen('vandag')">Vandaag inleveren</button>
+		<button class="knop" onclick="artikelen('moment')">Uitgeleend/Geplanned</button>
 		<div class="grote" id="telaat">
 			<?php if (!$tolate->num_rows == 0) { ?>
 				<table border='1'>
@@ -145,9 +145,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<hr>
 			<br>
 			<center>
-			<button class="knop" onclick="artikel('toe')">Toevoegen</button>
-			<button class="knop" onclick="artikel('wij')">Wijzigen</button>
-			<button class="knop" onclick="artikel('ver')">Verwijderen</button>
+				<h2>Categorie</h2>
+				<button class="knop" onclick="artikel('toe')">Toevoegen</button>
+				<button class="knop" onclick="artikel('wij')">Wijzigen</button>
+				<button class="knop" onclick="artikel('ver')">Verwijderen</button><br>
 				<div id="toe">
 				<h3>Toevoegen</h3>
 				<table border=1>
@@ -176,8 +177,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			</tbody>
 			</form>
 			</table>
-			</div>
 			<br>
+			</div>
 			<center>
                 <div id="wij">
 				<h3>Aanpassen</h3>
@@ -207,8 +208,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			</tbody>
 			</form>
 			</table>
-			</div>
 			<br>
+			</div>
 			<center>
 				<div id="ver">
 				<h3>verwijderen</h3>
@@ -237,9 +238,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<br><br>
 			<hr>
 			<h2>Account</h2>
-			<button class="knop" onclick="categorie('ctoe')">Toevoegen</button>
-			<button class="knop" onclick="categorie('cwij')">Wijzigen</button>
-			<button class="knop" onclick="categorie('cver')">Verwijderen</button>
+			<button class="knop" onclick="account('atoe')">Toevoegen</button>
+			<button class="knop" onclick="account('aaan')">Aanpassen</button>
+			<button class="knop" onclick="account('aver')">Verwijderen</button>
 			<div id="atoe">
 				<form method="POST">
 					<h3>Toevoegen</h3>
