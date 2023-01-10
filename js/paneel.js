@@ -1,88 +1,60 @@
-
-
-function telaat() {
-    var x = document.getElementById("telaat");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        document.getElementById("vandag").style.display = "none";
-        document.getElementById("moment").style.display = "none";
+function artikelen(welke){
+    if (welke === "telaat"){
+        document.getElementById('telaat').style.display = 'block'
+        document.getElementById('vandag').style.display = 'none'
+        document.getElementById('moment').style.display = 'none'
+    }else if (welke == "vandag"){
+        document.getElementById('telaat').style.display = 'none'
+        document.getElementById('vandag').style.display = 'block'
+        document.getElementById('moment').style.display = 'none'
+    }else if (welke == "moment"){
+        document.getElementById('telaat').style.display = 'none'
+        document.getElementById('vandag').style.display = 'none'
+        document.getElementById('moment').style.display = 'block'
     }
 }
-document.getElementById("vandag").style.display = "none";
-
-function vandag() {
-    var x = document.getElementById("vandag");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        document.getElementById("telaat").style.display = "none";
-        document.getElementById("moment").style.display = "none";
+function artikel(welke){
+    if (welke === "toe"){
+        document.getElementById('toe').style.display = 'block'
+        document.getElementById('wij').style.display = 'none'
+        document.getElementById('ver').style.display = 'none'
+    }else if (welke == "wij"){
+        document.getElementById('toe').style.display = 'none'
+        document.getElementById('wij').style.display = 'block'
+        document.getElementById('ver').style.display = 'none'
+    }else if (welke == "ver"){
+        document.getElementById('toe').style.display = 'none'
+        document.getElementById('wij').style.display = 'none'
+        document.getElementById('ver').style.display = 'block'
     }
 }
-document.getElementById("moment").style.display = "none";
-
-function moment() {
-    var x = document.getElementById("moment");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        document.getElementById("vandag").style.display = "none";
-        document.getElementById("telaat").style.display = "none";
+function categorie(welke){
+    if (welke === "ctoe"){
+        document.getElementById('ctoe').style.display = 'block'
+        document.getElementById('cwij').style.display = 'none'
+        document.getElementById('cver').style.display = 'none'
+    }else if (welke == "cwij"){
+        document.getElementById('ctoe').style.display = 'none'
+        document.getElementById('cwij').style.display = 'block'
+        document.getElementById('cver').style.display = 'none'
+    }else if (welke == "cver"){
+        document.getElementById('ctoe').style.display = 'none'
+        document.getElementById('cwij').style.display = 'none'
+        document.getElementById('cver').style.display = 'block'
     }
 }
-
-function toe() {
-    var x = document.getElementById("toe");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        document.getElementById("wij").style.display = "none";
-        document.getElementById("ver").style.display = "none";
-    }
-}
-document.getElementById("wij").style.display = "none";
-
-function wij() {
-    var x = document.getElementById("wij");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        document.getElementById("toe").style.display = "none";
-        document.getElementById("ver").style.display = "none";
-    }
-}
-document.getElementById("ver").style.display = "none";
-
-function ver() {
-    var x = document.getElementById("ver");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        document.getElementById("toe").style.display = "none";
-        document.getElementById("wij").style.display = "none";
-    }
-}
-
-function atoe() {
-    var x = document.getElementById("atoe");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        document.getElementById("aaan").style.display = "none";
-        document.getElementById("aver").style.display = "none";
-    }
-}
-document.getElementById("aaan").style.display = "none";
-
-function aaan() {
-    var x = document.getElementById("aaan");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        document.getElementById("atoe").style.display = "none";
-        document.getElementById("aver").style.display = "none";
-    }
-}
-document.getElementById("aver").style.display = "none";
-
-function aver() {
-    var x = document.getElementById("aver");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        document.getElementById("atoe").style.display = "none";
-        document.getElementById("aaan").style.display = "none";
+function account(welke){
+    if (welke === "atoe"){
+        document.getElementById('atoe').style.display = 'block'
+        document.getElementById('aaan').style.display = 'none'
+        document.getElementById('aver').style.display = 'none'
+    }else if (welke == "aaan"){
+        document.getElementById('atoe').style.display = 'none'
+        document.getElementById('aaan').style.display = 'block'
+        document.getElementById('aver').style.display = 'none'
+    }else if (welke == "aver"){
+        document.getElementById('atoe').style.display = 'none'
+        document.getElementById('aaan').style.display = 'none'
+        document.getElementById('aver').style.display = 'block'
     }
 }

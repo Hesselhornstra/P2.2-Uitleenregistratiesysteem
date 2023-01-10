@@ -35,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<hr>
 	<center>
 		<h2>Artikelen</h2>
-		<button class="knop" onclick="telaat()">Te Laat</button>
-		<button class="knop" onclick="vandag()">Vandaag inleveren</button>
-		<button class="knop" onclick="moment()">Uitgeleend/Geplanned</button>
+		<button class="knop" onclick="artikelen('telaat')">Te Laat</button>
+			<button class="knop" onclick="artikelen('vandag')">Vandaag inleveren</button>
+			<button class="knop" onclick="artikelen('moment')">Uitgeleend/Geplanned</button>
 		<div class="grote" id="telaat">
 			<?php if (!$tolate->num_rows == 0) { ?>
 				<table border='1'>
@@ -145,9 +145,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<hr>
 			<br>
 			<center>
-				<button class="knop" onclick="toe()">Toevoegen</button>
-				<button class="knop" onclick="wij()">Wijzigen</button>
-				<button class="knop" onclick="ver()">Verwijderen</button><br>
+			<button class="knop" onclick="artikel('toe')">Toevoegen</button>
+			<button class="knop" onclick="artikel('wij')">Wijzigen</button>
+			<button class="knop" onclick="artikel('ver')">Verwijderen</button>
 				<div id="toe">
 				<h3>Toevoegen</h3>
 				<table border=1>
@@ -237,9 +237,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<br><br>
 			<hr>
 			<h2>Account</h2>
-			<button class="knop" onclick="atoe()">Toevoegen</button>
-			<button class="knop" onclick="aaan()">Aanpassen</button>
-			<button class="knop" onclick="aver()">Verwijderen</button>
+			<button class="knop" onclick="categorie('ctoe')">Toevoegen</button>
+			<button class="knop" onclick="categorie('cwij')">Wijzigen</button>
+			<button class="knop" onclick="categorie('cver')">Verwijderen</button>
 			<div id="atoe">
 				<form method="POST">
 					<h3>Toevoegen</h3>
