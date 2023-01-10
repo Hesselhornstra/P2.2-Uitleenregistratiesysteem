@@ -58,9 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<tr>
 								<td><?= $row['naam'] ?></td>
 								<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
-								<td><?= $row['datumuit'] ?></td>
+								<td><?= date("d-m-Y", strtotime($row['datumuit'])) ?></td>
 								<td><?= $producttolate['naam'] ?></td>
-								<td><?= $row['datumin'] ?></td>
+								<td><?= date("d-m-Y", strtotime($row['datumin'])) ?></td>
 							</tr>
 						<?php
 						}
@@ -92,9 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<tr>
 								<td><?= $row['naam'] ?></td>
 								<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
-								<td><?= $row['datumuit'] ?></td>
+								<td><?= date("d-m-Y", strtotime($row['datumuit'])) ?></td>
 								<td><?= $producttoday['naam'] ?></td>
-								<td><?= $row['datumin'] ?></td>
+								<td><?= date("d-m-Y", strtotime($row['datumin'])) ?></td>
 							</tr>
 						<?php
 						}
@@ -127,9 +127,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 								<tr>
 									<td><?= $row['naam'] ?></td>
 									<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
-									<td><?= $row['datumuit'] ?></td>
+									<td><?= date("d-m-Y", strtotime($row['datumuit'])) ?></td>
 									<td><?= $productstil['naam'] ?></td>
-									<td><?= $row['datumin'] ?></td>
+									<td><?= date("d-m-Y", strtotime($row['datumin'])) ?></td>
 								</tr>
 							<?php
 							}
