@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<hr>
 			<br>
 			<center>
-				<h2>Categorie</h2>
+				<h2>Artikel</h2>
 				<button class="knop" onclick="artikel('toe')">Toevoegen</button>
 				<button class="knop" onclick="artikel('wij')">Wijzigen</button>
 				<button class="knop" onclick="artikel('ver')">Verwijderen</button><br>

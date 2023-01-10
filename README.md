@@ -15,7 +15,7 @@ Dit project is het maken van een Uitleenregistratiesysteem. We maken het in HTML
     <li><a href="#regels">Regels</a></li>
     <li><a href="#score">Score</a></li>
     <li><a href="#benodigde-gegevens">Benodigde gegevens</a></li>
-    <li><a href="#herhinderingen">Herhinderingen</a></li>
+    <li><a href="#herinneringen">Herinneringen</a></li>
   </ol>
 </details>
 
@@ -34,9 +34,9 @@ Dit project is het maken van een Uitleenregistratiesysteem. We maken het in HTML
 - Schreeuwen naar elkaar mag.
 - Gamen mag alleen na 4 uur.
 - Max 5 minuten te laat, Daarna consequences.
-- Te laat melden = skitels.
+- Te laat melden = skittles.
 - 1x te laat = Chocolademelk.
-- 2x te laat = Skitels pp.
+- 2x te laat = skittles pp.
 - 3x te laat = op rotten.
 
 ## Score
@@ -50,5 +50,5 @@ Dit project is het maken van een Uitleenregistratiesysteem. We maken het in HTML
 - Database account
 - Mail
 
-## Herhinderingen
+## Herinneringen
 - Week 2-3: Gegevens aanvragen/Pushen online
