@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<script src="/js/paneel.js" defer></script>
 </head>
 
-<body style="body">
+<body>
 	<button class="uitlog" onclick="location.href = `/loguit`">Uitloggen</button>
 	<button class="uitlog" onclick="location.href = `/`">Artikelen</button>
 	<hr>
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						?>
 							<tr>
 								<td><?= $row['naam'] ?></td>
-								<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
+								<td><a class="mailwhite" href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
 								<td><?= date("d-m-Y", strtotime($row['datumuit'])) ?></td>
 								<td><?= $producttolate['naam'] ?></td>
 								<td><?= date("d-m-Y", strtotime($row['datumin'])) ?></td>
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						?>
 							<tr>
 								<td><?= $row['naam'] ?></td>
-								<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
+								<td><a class="mailwhite" href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
 								<td><?= date("d-m-Y", strtotime($row['datumuit'])) ?></td>
 								<td><?= $producttoday['naam'] ?></td>
 								<td><?= date("d-m-Y", strtotime($row['datumin'])) ?></td>
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							?>
 								<tr>
 									<td><?= $row['naam'] ?></td>
-									<td><a href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
+									<td><a class="mailwhite" href="mailto:<?= $row['mail'] ?>"><?= $row['mail'] ?></a></td>
 									<td><?= date("d-m-Y", strtotime($row['datumuit'])) ?></td>
 									<td><?= $productstil['naam'] ?></td>
 									<td><?= date("d-m-Y", strtotime($row['datumin'])) ?></td>
