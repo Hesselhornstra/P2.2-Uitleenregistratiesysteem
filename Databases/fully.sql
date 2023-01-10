@@ -1,3 +1,31 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0-1.el8.remi
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Gegenereerd op: 10 jan 2023 om 09:49
+-- Serverversie: 10.5.18-MariaDB-cll-lve-log
+-- PHP-versie: 7.3.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `deb85590_p22k1t4`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `artikelen`
+--
 
 CREATE TABLE `artikelen` (
   `id` int(11) NOT NULL,
@@ -18,11 +46,11 @@ INSERT INTO `artikelen` (`id`, `naam`, `info`, `img`, `barcode`, `cate`) VALUES
 (4, 'Dell laptop', 'goede laptop voor een normale schooldag', 'https://www.ituitverkoop.nl//Files/10/215000/215145/ProductPhotos/Source/1875112410.jpg', '3', '1'),
 (5, 'Macbook', 'goede laptop voor een normale schooldag', 'https://th.bing.com/th/id/OIP.755wzhwdxHb016IJ3KCVIwHaFc?pid=ImgDet&rs=1', '4', '1'),
 (6, 'Asus laptop', 'goede laptop voor een normale schooldag', 'https://th.bing.com/th/id/R.96aa915e6a00d5a006adcaa40331624f?rik=bdJrYbz389LhQA&riu=http%3a%2f%2f1.bp.blogspot.com%2f-p_NeRfUSuSk%2fT7zPgaQPSvI%2fAAAAAAAADeA%2fkqgKFuAE6xI%2fs1600%2fASUS%2bN75SF-DH71.jpg&ehk=F1QyX66MMvpOoFnMHoayicOt1bttwYTJg6jQCVzqCYM%3d&', '5', '1'),
-(7, 'monitor 1', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '6', '2'),
-(8, 'monitor 2', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '7', '2'),
-(9, 'monitor 3', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '8', '2'),
-(10, 'monitor 4', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '9', '2'),
-(11, 'monitor 5', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '10', '2'),
+(7, 'monitor 2', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '6', '2'),
+(8, 'monitor 3', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '7', '2'),
+(9, 'monitor 4', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '8', '2'),
+(10, 'monitor 5', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '9', '2'),
+(11, 'monitor 1', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '10', '2'),
 (12, 'hdmi kabel', 'hdmi kabel, handig als je een presentatie moet geven', 'https://image.allekabels.nl/image/1081345-0/hdmi-kabel-1.4-high-speed-20-meter', '11', '3'),
 (13, 'hdmi kabel', 'hdmi kabel, handig als je een presentatie moet geven', 'https://image.allekabels.nl/image/1081345-0/hdmi-kabel-1.4-high-speed-20-meter', '12', '3'),
 (14, 'usb kabel', 'usb kabel, voor als je gegevens moet overzetten ', 'https://image.allekabels.nl/image/1165065-0/usb-3.0-kabel-3-meter.jpg', '13', '3'),
@@ -63,7 +91,8 @@ INSERT INTO `artikelen` (`id`, `naam`, `info`, `img`, `barcode`, `cate`) VALUES
 (51, 'camera 2', 'De D5600 is voorzien van een grote DX-formaat beeldsensor met 24,2 megapixels die fijne patronen scherp vastlegt en beelden produceert met zeer heldere details. Uw vrienden en volgers zien precies wat u voor ogen had, bij elke opname. Een ISO-bereik van 100-25.600 en een uitbreidbare ISO-gevoeligheid van 6400 in de stand Nachtlandschap zorgen ervoor dat slecht verlichte onderwerpen en moeilijke lichtomstandigheden probleemloos worden afgehandeld. De nieuwe EXPEED 4-beeldverwerkingsengine biedt een uitstekende ruisonderdrukking, zelfs bij hoge ISO-waarden. En aangezien een groot aantal verwisselbare NIKKOR-objectieven tot uw beschikking staat, liggen beelden met een prachtig onscherpe achtergrond en rijke contrasten binnen handbereik.', 'https://media.s-bol.com/BBB50GjWX37Q/550x521.jpg', '47', '5'),
 (52, 'camera 3', 'De D5600 is voorzien van een grote DX-formaat beeldsensor met 24,2 megapixels die fijne patronen scherp vastlegt en beelden produceert met zeer heldere details. Uw vrienden en volgers zien precies wat u voor ogen had, bij elke opname. Een ISO-bereik van 100-25.600 en een uitbreidbare ISO-gevoeligheid van 6400 in de stand Nachtlandschap zorgen ervoor dat slecht verlichte onderwerpen en moeilijke lichtomstandigheden probleemloos worden afgehandeld. De nieuwe EXPEED 4-beeldverwerkingsengine biedt een uitstekende ruisonderdrukking, zelfs bij hoge ISO-waarden. En aangezien een groot aantal verwisselbare NIKKOR-objectieven tot uw beschikking staat, liggen beelden met een prachtig onscherpe achtergrond en rijke contrasten binnen handbereik.', 'https://media.s-bol.com/BBB50GjWX37Q/550x521.jpg', '48', '5'),
 (53, 'camera 4', 'De D5600 is voorzien van een grote DX-formaat beeldsensor met 24,2 megapixels die fijne patronen scherp vastlegt en beelden produceert met zeer heldere details. Uw vrienden en volgers zien precies wat u voor ogen had, bij elke opname. Een ISO-bereik van 100-25.600 en een uitbreidbare ISO-gevoeligheid van 6400 in de stand Nachtlandschap zorgen ervoor dat slecht verlichte onderwerpen en moeilijke lichtomstandigheden probleemloos worden afgehandeld. De nieuwe EXPEED 4-beeldverwerkingsengine biedt een uitstekende ruisonderdrukking, zelfs bij hoge ISO-waarden. En aangezien een groot aantal verwisselbare NIKKOR-objectieven tot uw beschikking staat, liggen beelden met een prachtig onscherpe achtergrond en rijke contrasten binnen handbereik.', 'https://media.s-bol.com/BBB50GjWX37Q/550x521.jpg', '49', '5'),
-(54, 'camera 5', 'De D5600 is voorzien van een grote DX-formaat beeldsensor met 24,2 megapixels die fijne patronen scherp vastlegt en beelden produceert met zeer heldere details. Uw vrienden en volgers zien precies wat u voor ogen had, bij elke opname. Een ISO-bereik van 100-25.600 en een uitbreidbare ISO-gevoeligheid van 6400 in de stand Nachtlandschap zorgen ervoor dat slecht verlichte onderwerpen en moeilijke lichtomstandigheden probleemloos worden afgehandeld. De nieuwe EXPEED 4-beeldverwerkingsengine biedt een uitstekende ruisonderdrukking, zelfs bij hoge ISO-waarden. En aangezien een groot aantal verwisselbare NIKKOR-objectieven tot uw beschikking staat, liggen beelden met een prachtig onscherpe achtergrond en rijke contrasten binnen handbereik.', 'https://media.s-bol.com/BBB50GjWX37Q/550x521.jpg', '50', '5');
+(54, 'camera 5', 'De D5600 is voorzien van een grote DX-formaat beeldsensor met 24,2 megapixels die fijne patronen scherp vastlegt en beelden produceert met zeer heldere details. Uw vrienden en volgers zien precies wat u voor ogen had, bij elke opname. Een ISO-bereik van 100-25.600 en een uitbreidbare ISO-gevoeligheid van 6400 in de stand Nachtlandschap zorgen ervoor dat slecht verlichte onderwerpen en moeilijke lichtomstandigheden probleemloos worden afgehandeld. De nieuwe EXPEED 4-beeldverwerkingsengine biedt een uitstekende ruisonderdrukking, zelfs bij hoge ISO-waarden. En aangezien een groot aantal verwisselbare NIKKOR-objectieven tot uw beschikking staat, liggen beelden met een prachtig onscherpe achtergrond en rijke contrasten binnen handbereik.', 'https://media.s-bol.com/BBB50GjWX37Q/550x521.jpg', '50', '5'),
+(55, 'monitor 4', 'monitor waarmee je op meerdere schermen kan werken', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg', '8', '2');
 
 -- --------------------------------------------------------
 
@@ -205,7 +234,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT voor een tabel `artikelen`
 --
 ALTER TABLE `artikelen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT voor een tabel `artikelges`
@@ -231,3 +260,7 @@ ALTER TABLE `categorieen`
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
