@@ -54,15 +54,15 @@ body {
 	padding: 0;
 	background-color: #23272a;
 	color: #fff;
+	font-style: normal;
 }
 .knop {
 	top: 1.0vw;
 	right: 1.0vw;
-	width: 10vw;
+	width: 12vw;
 	height: 3vh;
 	background-color: #176292;
 	color: #fff;
-	border: gray solid 0.1vw;
 	border-radius: 0.3vw;
 }
 .inputtype {
@@ -83,4 +83,7 @@ body {
 	background-color: #2b2f31;
 	border: rgb(98, 98, 98) solid 0.05vw;
 	color: white;
+}
+.grote {
+    color:white;
 }

@@ -1,9 +1,10 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-/*if ($_SESSION['loggedin'] != true) {
+if ($_SESSION['loggedin'] != true) {
 	Header("Location: /");
-}*/
+}
 $tolate = $con->query("SELECT * FROM artikeluit WHERE datumin < CURRENT_DATE()");
+date("d-m-Y", strtotime(Hierkomtjeinput))
 $now = $con->query("SELECT * FROM artikeluit WHERE datumin = CURRENT_DATE()");
 $out = $con->query("SELECT * FROM artikeluit WHERE datumin > CURRENT_DATE()");
 $artnaam = $con->query("SELECT * FROM artikelen");
@@ -158,6 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 								<th>Naam artikel</th>
 								<th>Info artikel</th>
 								<th>Link foto</th>
+								<th></th>
 							</tr>
 						</thead>
 			</center>
@@ -188,6 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 								<th>Artikel</th>
 								<th>Naam artikel</th>
 								<th>Info artikel</th>
+								<th></th>
 							</tr>
 						</thead>
 			</center>
@@ -216,8 +219,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					<table border=1>
 						<thead>
 							<tr>
-
 								<th>Naam artikel</th>
+								<th></th>
 							</tr>
 						</thead>
 			</center>
