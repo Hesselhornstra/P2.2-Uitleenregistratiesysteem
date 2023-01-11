@@ -73,6 +73,11 @@ body {
 	color: #fff;
 	border-radius: 0.3vw;
 }
+.knop:hover{
+background-color: #0596f0;
+border: rgb(150, 150, 150) solid 0.05vw;
+cursor: pointer;
+}
 .inputtype {
 	background-color: #2b2f31;
 	color: white;
