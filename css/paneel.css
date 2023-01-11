@@ -65,12 +65,13 @@ body {
 	font-style: normal;
 }
 .knop {
-	border-radius: 0.3vw;
-	background-color: #176292;
-    color: white;
-	height: 2.5vw;
-	width: 6vw;
-	font-size: 14px;
+    position: relative;
+    width: 10vw;
+    height: 4vh;
+    background-color: #176292;
+    color: #fff;
+    border: gray solid 0.1vw;
+    border-radius: 0.3vw;
 }
 .knop:hover{
 background-color: #0596f0;
