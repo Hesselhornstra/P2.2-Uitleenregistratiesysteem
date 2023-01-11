@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<form method="post">
 					<input class="inputtype" type="hidden" name="form" value="art-nieuw">
 					<td><input class="inputtype" type="text" name="art-naam" required></td>
-					<td><input class="inputtype" type="text" name="art-info" required></td>
+					<td><input class="inputtype" type="textarea" name="art-info" required></td>
 					<td><input class="inputtype" type="text" name="art-foto" required></td>
 					<td><button class="knopp" name="registreer">registreer</button></td>
 			</tbody>
