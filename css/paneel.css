@@ -89,7 +89,7 @@ body {
 	font-size: 14px;
 }
 .uitlog:hover {
-	background-color: red;
+	background-color: #0596f0;
 	border: rgb(150, 150, 150) solid 0.05vw;
 	cursor: pointer;
 }
