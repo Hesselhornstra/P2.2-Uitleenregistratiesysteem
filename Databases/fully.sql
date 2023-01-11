@@ -1,23 +1,19 @@
--- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Server versie:                10.4.24-MariaDB - mariadb.org binary distribution
--- Server OS:                    Win64
--- HeidiSQL Versie:              12.1.0.6537
--- --------------------------------------------------------
+-- Structuur van  tabel uitleensysteem.categorieen wordt geschreven
+CREATE TABLE IF NOT EXISTS `categorieen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `naam` varchar(255) NOT NULL DEFAULT '',
+  `img` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
--- Databasestructuur van uitleensysteem wordt geschreven
-CREATE DATABASE IF NOT EXISTS `uitleensysteem` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `uitleensysteem`;
+-- Dumpen data van tabel uitleensysteem.categorieen: ~6 rows (ongeveer)
+INSERT INTO `categorieen` (`id`, `naam`, `img`) VALUES
+	(0, 'Easteregg', 'aa'),
+	(1, 'Laptops', 'https://th.bing.com/th/id/R.67af9d30db5892b1471f61b840b38879?rik=G13jlJ4tY%2b1w3Q&pid=ImgRaw&r=0'),
+	(2, 'monitoren', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg'),
+	(3, 'kabels', 'https://th.bing.com/th/id/OIP.4xKMLKPQ-XCvCKgCXo39XwHaE8?pid=ImgDet&rs=1'),
+	(4, 'assesoires', 'https://deac.nl/application/files/1215/8564/3481/Trotse_dealer_van_overige_machines_en_apparatuur.jpg'),
+	(5, 'cameras', 'https://media.s-bol.com/gkjB8Y6g1JK9/550x375.jpg');
 
 -- Structuur van  tabel uitleensysteem.artikelen wordt geschreven
 CREATE TABLE IF NOT EXISTS `artikelen` (
@@ -125,22 +121,6 @@ INSERT INTO `artikeluit` (`id`, `barcode`, `naam`, `mail`, `datumuit`, `datumin`
 	(3, 5, 'Hessel', 'Hessel@gmail.com', '2022-12-13', '2022-12-14', 'Hessel'),
 	(11, 2, 'Dimitri van Veenen', 'jdk.v.veenen@outlook.com', '2023-01-07', '2023-01-14', 'bram');
 
--- Structuur van  tabel uitleensysteem.categorieen wordt geschreven
-CREATE TABLE IF NOT EXISTS `categorieen` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `naam` varchar(255) NOT NULL DEFAULT '',
-  `img` varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
-
--- Dumpen data van tabel uitleensysteem.categorieen: ~6 rows (ongeveer)
-INSERT INTO `categorieen` (`id`, `naam`, `img`) VALUES
-	(0, 'Easteregg', 'aa'),
-	(1, 'Laptops', 'https://th.bing.com/th/id/R.67af9d30db5892b1471f61b840b38879?rik=G13jlJ4tY%2b1w3Q&pid=ImgRaw&r=0'),
-	(2, 'monitoren', 'https://www.lg.com/nl/images/monitoren/MD06013996/gallery/medium01.jpg'),
-	(3, 'kabels', 'https://th.bing.com/th/id/OIP.4xKMLKPQ-XCvCKgCXo39XwHaE8?pid=ImgDet&rs=1'),
-	(4, 'assesoires', 'https://deac.nl/application/files/1215/8564/3481/Trotse_dealer_van_overige_machines_en_apparatuur.jpg'),
-	(5, 'cameras', 'https://media.s-bol.com/gkjB8Y6g1JK9/550x375.jpg');
 
 -- Structuur van  tabel uitleensysteem.users wordt geschreven
 CREATE TABLE IF NOT EXISTS `users` (
@@ -156,9 +136,3 @@ INSERT INTO `users` (`id`, `name`, `password`) VALUES
 	(2, 'Dimitri', '$2y$10$xYZFuxCmjLrIvpOc5xzT6e.EIURa5Xp4VBrKGM/Gb529l3.0bDHKi'),
 	(3, 'Thomas', '$2y$10$xYZFuxCmjLrIvpOc5xzT6e.EIURa5Xp4VBrKGM/Gb529l3.0bDHKi'),
 	(4, 'bram', '$2y$10$40fl0lHXPyJPqOAhfFxYeuo2M1myN6Gy7kKyxDBDp4r7H8oW20hpq');
-
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
