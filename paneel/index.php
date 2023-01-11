@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<button class="uitlog" onclick="location.href = `/`">Artikelen</button>
 	<hr>
 	<center>
-		<h2>Artikelen</h2>
+		<h2>uitgeleend</h2>
 		<button class="knop" onclick="artikelen('telaat')">Te Laat</button>
 		<button class="knop" onclick="artikelen('vandag')">Vandaag inleveren</button>
 		<button class="knop" onclick="artikelen('moment')">Uitgeleend/Geplanned</button>
@@ -243,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<hr>
 			<br>
 			<center>
-				<h2>Categorieen</h2>
+				<h2>artikelen</h2>
 				<button class="knop" onclick="catcat('cattoe')">Toevoegen</button>
 				<button class="knop" onclick="catcat('catwij')">Wijzigen</button>
 				<button class="knop" onclick="catcat('catver')">Verwijderen</button><br>
