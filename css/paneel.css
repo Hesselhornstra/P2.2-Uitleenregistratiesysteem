@@ -84,8 +84,9 @@ body {
 	border-radius: 0.3vw;
 	background-color: #176292;
     color: white;
-	height: 3vw;
-	width: 7vw;
+	height: 2.5vw;
+	width: 5vw;
+	font-size: 20px;
 }
 .knopp {
 	height: 3vw;
