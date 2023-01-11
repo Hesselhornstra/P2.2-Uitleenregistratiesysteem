@@ -31,7 +31,7 @@ body {
 }
 .alleartikelen{
     position: relative;
-    top: 8vh;
+    top: 0.1vh;
     left: 50%;
     transform: translateX(-50%);
     width: 80.6vw;
@@ -219,21 +219,29 @@ body {
     text-decoration: none;
 }
 .catediv{
-    position: absolute;
-    top: 7vw;
-    left: 10vw;
+    position: relative;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80.6vw;
+    height: 5vh;
+}
+.catediv h1 {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
 }
 .terug {
-    position: relative;
-    top: -2.7vw;
-    left: 6.5vw;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
     width: 7vw;
     height: 3vh;
     background-color: #176292;
     color: #fff;
     border: gray solid 0.1vw;
     border-radius: 0.3vw;
-    margin-bottom: 4vw;
     margin-left: 66.9vw;
 }
 .terug:hover {
