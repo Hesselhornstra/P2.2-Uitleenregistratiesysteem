@@ -99,13 +99,11 @@ cursor: pointer;
 	cursor: pointer;
 }
 .knopp {
-	top: 1.0vw;
-	right: 1.0vw;
-	width: 12vw;
-	height: 3vh;
-	background-color: #176292;
-	color: #fff;
-	border-radius: 0.3vw;
+	height: 3vw;
+	width: 6vw;
+	background-color: #2b2f31;
+	border: rgb(98, 98, 98) solid 0.05vw;
+	color: white;
 }
 .knopp:hover {
 	background-color: #494b4b;
