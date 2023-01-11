@@ -2,7 +2,7 @@
 require $_SERVER['DOCUMENT_ROOT'].'/config.php';
 $categorieen = $con->query("SELECT * FROM categorieen WHERE not id='0'");
 if (isset($_GET['categorie'])){
-	if ($_GET['categorie']==99){
+	if ($_GET['categorie']==0){
 		header("location: / ");
 	}
 }
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<a><?= $row['naam'] ?></a>
 				</div>
 				<?php }} else {
-				$artikelen = $con->query("SELECT * FROM artikelen WHERE cate='".$_GET['categorie']."' ORDER BY barcode ASC");
+				$artikelen = $con->query("SELECT * FROM artikelen WHERE cate='".$_GET['categorie']."' ORDER BY 1");
 				if (!$artikelen->num_rows == 0) {
 					while ($row = $artikelen->fetch_assoc()) {
 					$uitgeleend = $con->query("SELECT * FROM artikeluit WHERE barcode='".$row['barcode']."' AND datumuit <= CURRENT_DATE()");
