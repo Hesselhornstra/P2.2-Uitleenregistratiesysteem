@@ -243,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<hr>
 			<br>
 			<center>
-				<h2>artikelen</h2>
+				<h2>catagorie</h2>
 				<button class="knop" onclick="catcat('cattoe')">Toevoegen</button>
 				<button class="knop" onclick="catcat('catwij')">Wijzigen</button>
 				<button class="knop" onclick="catcat('catver')">Verwijderen</button><br>
